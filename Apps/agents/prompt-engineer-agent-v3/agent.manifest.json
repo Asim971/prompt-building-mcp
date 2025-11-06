@@ -1,0 +1,137 @@
+{
+  "agent_id": "prompt_engineer_agent_v3",
+  "version": "3.0.0",
+  "name": "Enhanced Prompt Engineer Agent v3.0",
+  "description": "Advanced autonomous self-improving prompt engineering agent with 7-strategy integration framework for exceptional Dynamic 360 agent orchestration achieving 95/100+ quality scores.",
+  "category": "orchestration",
+  "capabilities": [
+    "advanced_prompt_engineering",
+    "seven_strategy_integration",
+    "extended_thinking_mode",
+    "multi_turn_refinement",
+    "validation_layer_execution",
+    "memory_context_persistence",
+    "xml_structure_design",
+    "skills_activation_framework",
+    "examples_framework_integration",
+    "quality_prediction_analysis",
+    "self_improvement_analytics",
+    "dynamic360_system_integration"
+  ],
+  "input_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["user_request", "context"],
+    "properties": {
+      "user_request": {
+        "type": "string",
+        "description": "User request for agent prompt generation"
+      },
+      "context": {
+        "type": "object",
+        "properties": {
+          "previous_agent_response": { "type": "string" },
+          "quality_feedback": { "type": "string" },
+          "business_requirements": { "type": "string" },
+          "d365_manufacturing_focus": { "type": "boolean" }
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["iteration_id", "timestamp", "selected_agent", "extended_thinking", "seven_strategy_analysis", "next_prompt", "validation_critique", "checks_passed"],
+    "properties": {
+      "iteration_id": { "type": "string" },
+      "timestamp": { "type": "string", "format": "date-time" },
+      "selected_agent": { "type": "string" },
+      "extended_thinking": {
+        "type": "object",
+        "required": ["context_analysis", "agent_selection_logic", "quality_prediction", "risk_assessment", "success_pattern_integration"],
+        "properties": {
+          "context_analysis": { "type": "string" },
+          "agent_selection_logic": { "type": "string" },
+          "quality_prediction": { "type": "number", "minimum": 0, "maximum": 100 },
+          "risk_assessment": { "type": "array", "items": { "type": "string" } },
+          "success_pattern_integration": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "seven_strategy_analysis": {
+        "type": "object",
+        "properties": {
+          "memory_persistence_applied": { "type": "boolean" },
+          "context_window_strategy_used": { "type": "boolean" },
+          "xml_structure_implemented": { "type": "boolean" },
+          "skills_activation_defined": { "type": "array", "items": { "type": "string" } },
+          "examples_framework_embedded": { "type": "boolean" },
+          "extended_thinking_required": { "type": "boolean" },
+          "multi_turn_refinement_enabled": { "type": "boolean" },
+          "validation_layer_configured": { "type": "boolean" }
+        }
+      },
+      "next_prompt": { "type": "object" },
+      "validation_critique": {
+        "type": "object",
+        "required": ["quality_validation", "risk_assessment", "improvement_identification"],
+        "properties": {
+          "quality_validation": { "type": "array", "items": { "type": "string" } },
+          "risk_assessment": { "type": "array", "items": { "type": "string" } },
+          "improvement_identification": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "checks_passed": { "type": "boolean" },
+      "quality_prediction_score": { "type": "number", "minimum": 0, "maximum": 100 }
+    }
+  },
+  "safety_restrictions": [
+    "No policy violations (enterprise data protection)",
+    "100% safety validation required",
+    "No invention of schemas - route to evaluator_agent",
+    "Maintain immutable audit trail",
+    "Enterprise security compliance mandatory",
+    "D365 manufacturing focus only",
+    "95/100+ quality standard enforcement"
+  ],
+  "quality_metrics": {
+    "accuracy_threshold": 0.95,
+    "completeness_score": 0.95,
+    "response_time_max": 300,
+    "data_freshness_days": 1
+  },
+  "integration_points": {
+    "dynamics365_modules": [
+      "Manufacturing",
+      "Supply Chain Management",
+      "Finance and Operations",
+      "Business Central"
+    ],
+    "microsoft_ecosystem": [
+      "Partner Center API",
+      "AppSource Marketplace",
+      "Azure Integration Services",
+      "Power Platform"
+    ]
+  },
+  "dependencies": [
+    "evaluator_agent",
+    "research_agent",
+    "prd_agent",
+    "technical_planning_agent"
+  ],
+  "next_agents": [
+    "research_agent",
+    "prd_agent",
+    "technical_planning_agent",
+    "roadmap_agent",
+    "evaluator_agent"
+  ],
+  "performance_benchmarks": {
+    "seven_strategy_integration_rate": "100% (all strategies in every prompt)",
+    "quality_prediction_accuracy": ">90% (predicted vs actual scores)",
+    "extended_thinking_effectiveness": ">95% reasoning quality scores",
+    "multi_turn_refinement_success": ">85% improvement in iterations",
+    "validation_layer_prevention": ">95% error prevention rate",
+    "skills_activation_success": ">90% capability utilization"
+  }
+}
