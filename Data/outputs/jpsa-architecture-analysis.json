@@ -1,0 +1,1026 @@
+{
+  "analysisMetadata": {
+    "analysisDate": "2025-11-07",
+    "analysisPhase": "JPSA v1.0 - Architecture Analysis",
+    "confidence": 0.94,
+    "projectName": "JibonFlow Digital Health Platform",
+    "totalServices": 17,
+    "totalMCPTasks": 51,
+    "totalPrompts": 74,
+    "analysisPurpose": "Systematic mapping of 51 MCP tasks to 17 services across phase-progression architecture"
+  },
+
+  "serviceArchitecture": {
+    "backendServices": [
+      {
+        "serviceId": "auth-service",
+        "serviceName": "Authentication & Authorization Service",
+        "port": 4000,
+        "technologies": ["Express.js", "JWT", "OAuth2", "RSA Encryption"],
+        "description": "Foundation service providing JWT tokens and OAuth2 authentication",
+        "foundational": true,
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-001"],
+        "dependents": ["FRONT-001", "FRONT-002", "FRONT-003", "BACK-002", "BACK-003"],
+        "criticalPath": true,
+        "promptCount": 4,
+        "estimatedEffort": 36
+      },
+      {
+        "serviceId": "patient-management",
+        "serviceName": "Patient Management FHIR R4 Service",
+        "port": 3001,
+        "technologies": ["Express.js", "FHIR R4", "PostgreSQL", "Medical Records"],
+        "description": "Manages patient records using FHIR R4 standard healthcare data format",
+        "foundational": false,
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-002"],
+        "dependents": ["FRONT-003", "BACK-004", "BACK-010"],
+        "dependencies": ["auth-service"],
+        "criticalPath": true,
+        "promptCount": 4,
+        "estimatedEffort": 40
+      },
+      {
+        "serviceId": "telemedicine",
+        "serviceName": "Telemedicine Service E2EE",
+        "port": 4002,
+        "technologies": ["Express.js", "WebRTC", "E2EE", "Agora SDK", "Video Processing"],
+        "description": "Secure video conferencing with end-to-end encryption for healthcare consultations",
+        "foundational": false,
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-003"],
+        "dependents": ["FRONT-002", "BACK-010"],
+        "dependencies": ["auth-service", "integration-agora"],
+        "criticalPath": true,
+        "promptCount": 4,
+        "estimatedEffort": 44
+      },
+      {
+        "serviceId": "telemedicine-db",
+        "serviceName": "Telemedicine Database Service",
+        "port": null,
+        "technologies": ["PostgreSQL", "Database Migrations", "Schema Management"],
+        "description": "Database migrations and schema management for telemedicine platform",
+        "foundational": false,
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-011"],
+        "dependencies": ["auth-service"],
+        "criticalPath": false,
+        "promptCount": 4,
+        "estimatedEffort": 20
+      },
+      {
+        "serviceId": "prescription",
+        "serviceName": "Prescription Service",
+        "port": 4004,
+        "technologies": ["Express.js", "FHIR Prescription", "Validation", "Pharmacy Integration"],
+        "description": "Manages digital prescriptions with validation and pharmacy integration",
+        "foundational": false,
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-004"],
+        "dependencies": ["patient-management", "auth-service"],
+        "criticalPath": false,
+        "promptCount": 4,
+        "estimatedEffort": 32
+      },
+      {
+        "serviceId": "payment",
+        "serviceName": "Payment Service (bKash/SSLCommerz)",
+        "port": 4003,
+        "technologies": ["Express.js", "bKash API", "SSLCommerz", "PCI-DSS", "Tokenization"],
+        "description": "Payment gateway integration for local Bangladesh payment methods",
+        "foundational": false,
+        "hipaa": false,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-005"],
+        "dependencies": ["auth-service"],
+        "criticalPath": false,
+        "promptCount": 4,
+        "estimatedEffort": 28
+      },
+      {
+        "serviceId": "notification",
+        "serviceName": "Notification Service",
+        "port": 4005,
+        "technologies": ["Express.js", "Twilio SMS", "Firebase Cloud Messaging", "Email"],
+        "description": "Multi-channel notifications via SMS, email, and push notifications",
+        "foundational": false,
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": false,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-006"],
+        "dependencies": ["auth-service"],
+        "criticalPath": false,
+        "promptCount": 4,
+        "estimatedEffort": 24
+      },
+      {
+        "serviceId": "logistics-tracking",
+        "serviceName": "Logistics & Tracking Service",
+        "port": 4006,
+        "technologies": ["Express.js", "Socket.IO", "GPS", "Real-time Updates"],
+        "description": "Real-time GPS tracking for medicine delivery and logistics coordination",
+        "foundational": false,
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-007"],
+        "dependencies": ["auth-service"],
+        "criticalPath": false,
+        "promptCount": 4,
+        "estimatedEffort": 30
+      },
+      {
+        "serviceId": "medicine-verification",
+        "serviceName": "Medicine Verification Service",
+        "port": 4007,
+        "technologies": ["Express.js", "QR Code", "Barcode Scanner", "Pharmacy Database"],
+        "description": "QR/barcode verification system for authentic medicine verification",
+        "foundational": false,
+        "hipaa": false,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-008"],
+        "dependencies": ["auth-service"],
+        "criticalPath": false,
+        "promptCount": 4,
+        "estimatedEffort": 22
+      },
+      {
+        "serviceId": "loyalty-rewards",
+        "serviceName": "Loyalty & Rewards Service",
+        "port": 4008,
+        "technologies": ["Express.js", "Gamification", "Point System", "Loyalty DB"],
+        "description": "Gamification and loyalty rewards system for user engagement",
+        "foundational": false,
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": false,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-009"],
+        "dependencies": ["auth-service", "patient-management"],
+        "criticalPath": false,
+        "promptCount": 4,
+        "estimatedEffort": 20
+      },
+      {
+        "serviceId": "audit-logging",
+        "serviceName": "Audit Logging Service",
+        "port": 4009,
+        "technologies": ["Express.js", "HIPAA Audit", "Event Logging", "Compliance Reporting"],
+        "description": "HIPAA-compliant audit logging for all system activities",
+        "foundational": false,
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test", "deploy"],
+        "associatedTasks": ["BACK-010"],
+        "dependencies": ["auth-service"],
+        "criticalPath": true,
+        "promptCount": 4,
+        "estimatedEffort": 28
+      }
+    ],
+    "frontendApplications": [
+      {
+        "appId": "patient-portal",
+        "appName": "Patient Portal",
+        "technologies": ["Next.js 14", "TypeScript", "TailwindCSS", "Redux"],
+        "description": "Patient-facing application for appointments, prescriptions, telemedicine",
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test"],
+        "associatedTasks": ["FRONT-001", "FRONT-002"],
+        "dependencies": ["auth-service", "patient-management", "telemedicine"],
+        "criticalPath": true,
+        "promptCount": 3,
+        "estimatedEffort": 56
+      },
+      {
+        "appId": "provider-console",
+        "appName": "Provider Console",
+        "technologies": ["Next.js 14", "TypeScript", "TailwindCSS", "FHIR Client"],
+        "description": "Healthcare provider interface for patient management and consultations",
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test"],
+        "associatedTasks": ["FRONT-003"],
+        "dependencies": ["auth-service", "patient-management"],
+        "criticalPath": true,
+        "promptCount": 3,
+        "estimatedEffort": 48
+      },
+      {
+        "appId": "pharmacy-portal",
+        "appName": "Pharmacy Portal (B2B)",
+        "technologies": ["Next.js 14", "TypeScript", "TailwindCSS", "Inventory"],
+        "description": "B2B pharmacy ordering and inventory management system",
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test"],
+        "associatedTasks": ["FRONT-004"],
+        "dependencies": ["auth-service", "payment"],
+        "criticalPath": false,
+        "promptCount": 3,
+        "estimatedEffort": 40
+      },
+      {
+        "appId": "pharma-portal",
+        "appName": "Pharma Portal (Analytics)",
+        "technologies": ["Next.js 14", "TypeScript", "TailwindCSS", "Charts", "Analytics"],
+        "description": "Pharmaceutical company analytics and dashboard for market insights",
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": false,
+        "phaseProgression": ["scaffold", "implement", "test"],
+        "associatedTasks": ["FRONT-005"],
+        "dependencies": ["auth-service"],
+        "criticalPath": false,
+        "promptCount": 3,
+        "estimatedEffort": 32
+      },
+      {
+        "appId": "chw-companion",
+        "appName": "CHW Companion (PWA)",
+        "technologies": ["Next.js 14", "TypeScript", "TailwindCSS", "Service Workers", "Offline-First"],
+        "description": "Community Health Worker offline-first progressive web app",
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test"],
+        "associatedTasks": ["FRONT-006"],
+        "dependencies": ["auth-service", "patient-management"],
+        "criticalPath": false,
+        "promptCount": 3,
+        "estimatedEffort": 44
+      },
+      {
+        "appId": "admin-console",
+        "appName": "Admin Console",
+        "technologies": ["Next.js 14", "TypeScript", "TailwindCSS", "RBAC", "Audit Logs"],
+        "description": "Administrative dashboard with role-based access control and audit logs",
+        "hipaa": true,
+        "gdpr": true,
+        "bangladeshCompliance": true,
+        "phaseProgression": ["scaffold", "implement", "test"],
+        "associatedTasks": ["FRONT-007"],
+        "dependencies": ["auth-service", "audit-logging"],
+        "criticalPath": false,
+        "promptCount": 3,
+        "estimatedEffort": 40
+      }
+    ]
+  },
+
+  "mcpTaskMapping": {
+    "frontendTasks": {
+      "count": 18,
+      "tasks": [
+        {
+          "taskId": "FRONT-001",
+          "taskName": "Patient Portal Authentication System",
+          "service": "patient-portal",
+          "phase": "scaffold",
+          "priority": "CRITICAL",
+          "estimatedEffort": 24,
+          "dependencies": ["BACK-001", "COMP-001"],
+          "description": "Initialize patient portal with auth system"
+        },
+        {
+          "taskId": "FRONT-002",
+          "taskName": "Patient Portal Telemedicine Interface",
+          "service": "patient-portal",
+          "phase": "implement",
+          "priority": "CRITICAL",
+          "estimatedEffort": 32,
+          "dependencies": ["FRONT-001", "BACK-003", "INT-001"],
+          "description": "Implement telemedicine UI for patient portal"
+        },
+        {
+          "taskId": "FRONT-003",
+          "taskName": "Provider Console FHIR R4 Integration",
+          "service": "provider-console",
+          "phase": "scaffold",
+          "priority": "CRITICAL",
+          "estimatedEffort": 28,
+          "dependencies": ["FRONT-001", "BACK-002", "COMP-002"],
+          "description": "Set up provider console with FHIR integration"
+        },
+        {
+          "taskId": "FRONT-004",
+          "taskName": "Pharmacy Portal B2B Interface",
+          "service": "pharmacy-portal",
+          "phase": "scaffold",
+          "priority": "HIGH",
+          "estimatedEffort": 24,
+          "dependencies": ["FRONT-001", "BACK-005"],
+          "description": "Initialize pharmacy portal for B2B ordering"
+        },
+        {
+          "taskId": "FRONT-005",
+          "taskName": "Pharma Analytics Dashboard",
+          "service": "pharma-portal",
+          "phase": "scaffold",
+          "priority": "MEDIUM",
+          "estimatedEffort": 20,
+          "dependencies": ["FRONT-001"],
+          "description": "Create analytics dashboard for pharmaceutical insights"
+        },
+        {
+          "taskId": "FRONT-006",
+          "taskName": "CHW Companion Offline PWA",
+          "service": "chw-companion",
+          "phase": "scaffold",
+          "priority": "HIGH",
+          "estimatedEffort": 28,
+          "dependencies": ["FRONT-001", "BACK-002"],
+          "description": "Implement offline-capable PWA for CHW"
+        },
+        {
+          "taskId": "FRONT-007",
+          "taskName": "Admin Console RBAC System",
+          "service": "admin-console",
+          "phase": "scaffold",
+          "priority": "HIGH",
+          "estimatedEffort": 24,
+          "dependencies": ["FRONT-001", "BACK-010"],
+          "description": "Build admin console with RBAC"
+        },
+        {
+          "taskId": "FRONT-008",
+          "taskName": "Provider Console Prescription Management",
+          "service": "provider-console",
+          "phase": "implement",
+          "priority": "HIGH",
+          "estimatedEffort": 20,
+          "dependencies": ["FRONT-003", "BACK-004"],
+          "description": "Implement prescription management in provider console"
+        },
+        {
+          "taskId": "FRONT-009",
+          "taskName": "Patient Portal Appointment Booking",
+          "service": "patient-portal",
+          "phase": "implement",
+          "priority": "HIGH",
+          "estimatedEffort": 16,
+          "dependencies": ["FRONT-001", "BACK-001"],
+          "description": "Add appointment booking functionality"
+        },
+        {
+          "taskId": "FRONT-010",
+          "taskName": "Pharmacy Portal Inventory Management",
+          "service": "pharmacy-portal",
+          "phase": "implement",
+          "priority": "MEDIUM",
+          "estimatedEffort": 16,
+          "dependencies": ["FRONT-004"],
+          "description": "Implement inventory management UI"
+        },
+        {
+          "taskId": "FRONT-011",
+          "taskName": "CHW Companion Patient Registration",
+          "service": "chw-companion",
+          "phase": "implement",
+          "priority": "HIGH",
+          "estimatedEffort": 16,
+          "dependencies": ["FRONT-006", "BACK-002"],
+          "description": "Patient registration form for CHW"
+        },
+        {
+          "taskId": "FRONT-012",
+          "taskName": "Admin Console User Management",
+          "service": "admin-console",
+          "phase": "implement",
+          "priority": "MEDIUM",
+          "estimatedEffort": 16,
+          "dependencies": ["FRONT-007"],
+          "description": "User management interface"
+        },
+        {
+          "taskId": "FRONT-013",
+          "taskName": "Patient Portal Testing Suite",
+          "service": "patient-portal",
+          "phase": "test",
+          "priority": "HIGH",
+          "estimatedEffort": 20,
+          "dependencies": ["FRONT-001", "FRONT-002", "FRONT-009"],
+          "description": "Comprehensive testing for patient portal"
+        },
+        {
+          "taskId": "FRONT-014",
+          "taskName": "Provider Console Testing Suite",
+          "service": "provider-console",
+          "phase": "test",
+          "priority": "HIGH",
+          "estimatedEffort": 18,
+          "dependencies": ["FRONT-003", "FRONT-008"],
+          "description": "Testing for provider console"
+        },
+        {
+          "taskId": "FRONT-015",
+          "taskName": "Pharmacy Portal Testing Suite",
+          "service": "pharmacy-portal",
+          "phase": "test",
+          "priority": "MEDIUM",
+          "estimatedEffort": 12,
+          "dependencies": ["FRONT-004", "FRONT-010"],
+          "description": "Testing for pharmacy portal"
+        },
+        {
+          "taskId": "FRONT-016",
+          "taskName": "Pharma Portal Testing Suite",
+          "service": "pharma-portal",
+          "phase": "test",
+          "priority": "LOW",
+          "estimatedEffort": 10,
+          "dependencies": ["FRONT-005"],
+          "description": "Testing for analytics dashboard"
+        },
+        {
+          "taskId": "FRONT-017",
+          "taskName": "CHW Companion Testing Suite",
+          "service": "chw-companion",
+          "phase": "test",
+          "priority": "MEDIUM",
+          "estimatedEffort": 14,
+          "dependencies": ["FRONT-006", "FRONT-011"],
+          "description": "Testing including offline scenarios"
+        },
+        {
+          "taskId": "FRONT-018",
+          "taskName": "Admin Console Testing Suite",
+          "service": "admin-console",
+          "phase": "test",
+          "priority": "MEDIUM",
+          "estimatedEffort": 12,
+          "dependencies": ["FRONT-007", "FRONT-012"],
+          "description": "Testing for admin console"
+        }
+      ]
+    },
+    "backendTasks": {
+      "count": 22,
+      "tasks": [
+        {
+          "taskId": "BACK-001",
+          "taskName": "Auth Service JWT & OAuth2 Implementation",
+          "service": "auth-service",
+          "phase": "scaffold",
+          "priority": "CRITICAL",
+          "estimatedEffort": 36,
+          "dependencies": ["COMP-001", "COMP-003"],
+          "description": "Foundation authentication service scaffold"
+        },
+        {
+          "taskId": "BACK-002",
+          "taskName": "Patient Management FHIR R4 Service",
+          "service": "patient-management",
+          "phase": "scaffold",
+          "priority": "CRITICAL",
+          "estimatedEffort": 40,
+          "dependencies": ["BACK-001", "COMP-004", "BACK-011"],
+          "description": "FHIR R4 patient management scaffold"
+        },
+        {
+          "taskId": "BACK-003",
+          "taskName": "Telemedicine Service E2EE Implementation",
+          "service": "telemedicine",
+          "phase": "scaffold",
+          "priority": "CRITICAL",
+          "estimatedEffort": 44,
+          "dependencies": ["BACK-001", "INT-001", "SEC-001"],
+          "description": "Telemedicine with E2EE scaffold"
+        },
+        {
+          "taskId": "BACK-004",
+          "taskName": "Prescription Service FHIR Integration",
+          "service": "prescription",
+          "phase": "scaffold",
+          "priority": "HIGH",
+          "estimatedEffort": 32,
+          "dependencies": ["BACK-002", "BACK-001"],
+          "description": "FHIR prescription service scaffold"
+        },
+        {
+          "taskId": "BACK-005",
+          "taskName": "Payment Service Gateway Integration",
+          "service": "payment",
+          "phase": "scaffold",
+          "priority": "HIGH",
+          "estimatedEffort": 28,
+          "dependencies": ["BACK-001"],
+          "description": "Payment gateway integration scaffold"
+        },
+        {
+          "taskId": "BACK-006",
+          "taskName": "Notification Service Setup",
+          "service": "notification",
+          "phase": "scaffold",
+          "priority": "MEDIUM",
+          "estimatedEffort": 24,
+          "dependencies": ["BACK-001"],
+          "description": "Multi-channel notification service scaffold"
+        },
+        {
+          "taskId": "BACK-007",
+          "taskName": "Logistics Tracking Service Implementation",
+          "service": "logistics-tracking",
+          "phase": "scaffold",
+          "priority": "MEDIUM",
+          "estimatedEffort": 30,
+          "dependencies": ["BACK-001"],
+          "description": "Real-time GPS tracking scaffold"
+        },
+        {
+          "taskId": "BACK-008",
+          "taskName": "Medicine Verification QR Integration",
+          "service": "medicine-verification",
+          "phase": "scaffold",
+          "priority": "MEDIUM",
+          "estimatedEffort": 22,
+          "dependencies": ["BACK-001"],
+          "description": "QR/barcode verification scaffold"
+        },
+        {
+          "taskId": "BACK-009",
+          "taskName": "Loyalty Rewards Service Setup",
+          "service": "loyalty-rewards",
+          "phase": "scaffold",
+          "priority": "LOW",
+          "estimatedEffort": 20,
+          "dependencies": ["BACK-001", "BACK-002"],
+          "description": "Gamification service scaffold"
+        },
+        {
+          "taskId": "BACK-010",
+          "taskName": "Audit Logging Service Implementation",
+          "service": "audit-logging",
+          "phase": "scaffold",
+          "priority": "CRITICAL",
+          "estimatedEffort": 28,
+          "dependencies": ["BACK-001"],
+          "description": "HIPAA-compliant audit logging scaffold"
+        },
+        {
+          "taskId": "BACK-011",
+          "taskName": "Database Schema & Migrations",
+          "service": "telemedicine-db",
+          "phase": "scaffold",
+          "priority": "CRITICAL",
+          "estimatedEffort": 20,
+          "dependencies": ["BACK-001"],
+          "description": "Database schema setup and migrations"
+        },
+        {
+          "taskId": "BACK-012",
+          "taskName": "Auth Service Implementation",
+          "service": "auth-service",
+          "phase": "implement",
+          "priority": "CRITICAL",
+          "estimatedEffort": 40,
+          "dependencies": ["BACK-001"],
+          "description": "Full JWT & OAuth2 implementation"
+        },
+        {
+          "taskId": "BACK-013",
+          "taskName": "Patient Management Implementation",
+          "service": "patient-management",
+          "phase": "implement",
+          "priority": "CRITICAL",
+          "estimatedEffort": 44,
+          "dependencies": ["BACK-002"],
+          "description": "Complete FHIR R4 service implementation"
+        },
+        {
+          "taskId": "BACK-014",
+          "taskName": "Telemedicine Implementation",
+          "service": "telemedicine",
+          "phase": "implement",
+          "priority": "CRITICAL",
+          "estimatedEffort": 48,
+          "dependencies": ["BACK-003"],
+          "description": "Full telemedicine E2EE implementation"
+        },
+        {
+          "taskId": "BACK-015",
+          "taskName": "Payment Service Implementation",
+          "service": "payment",
+          "phase": "implement",
+          "priority": "HIGH",
+          "estimatedEffort": 32,
+          "dependencies": ["BACK-005"],
+          "description": "Complete payment gateway implementation"
+        },
+        {
+          "taskId": "BACK-016",
+          "taskName": "Backend Services Testing",
+          "service": "all-backend",
+          "phase": "test",
+          "priority": "HIGH",
+          "estimatedEffort": 40,
+          "dependencies": ["BACK-012", "BACK-013", "BACK-014", "BACK-015"],
+          "description": "Comprehensive backend testing suite"
+        },
+        {
+          "taskId": "BACK-017",
+          "taskName": "Integration Testing",
+          "service": "all-backend",
+          "phase": "test",
+          "priority": "HIGH",
+          "estimatedEffort": 36,
+          "dependencies": ["BACK-016"],
+          "description": "Cross-service integration testing"
+        },
+        {
+          "taskId": "BACK-018",
+          "taskName": "Performance Testing",
+          "service": "all-backend",
+          "phase": "test",
+          "priority": "MEDIUM",
+          "estimatedEffort": 24,
+          "dependencies": ["BACK-016", "BACK-017"],
+          "description": "Load and performance testing"
+        },
+        {
+          "taskId": "BACK-019",
+          "taskName": "Security Testing",
+          "service": "all-backend",
+          "phase": "test",
+          "priority": "CRITICAL",
+          "estimatedEffort": 32,
+          "dependencies": ["BACK-016"],
+          "description": "OWASP security testing"
+        },
+        {
+          "taskId": "BACK-020",
+          "taskName": "HIPAA Compliance Testing",
+          "service": "audit-logging",
+          "phase": "test",
+          "priority": "CRITICAL",
+          "estimatedEffort": 28,
+          "dependencies": ["BACK-016"],
+          "description": "HIPAA compliance validation"
+        },
+        {
+          "taskId": "BACK-021",
+          "taskName": "Docker Image Creation",
+          "service": "all-backend",
+          "phase": "deploy",
+          "priority": "HIGH",
+          "estimatedEffort": 16,
+          "dependencies": ["BACK-016", "BACK-017"],
+          "description": "Docker image setup for deployment"
+        },
+        {
+          "taskId": "BACK-022",
+          "taskName": "Production Deployment",
+          "service": "all-backend",
+          "phase": "deploy",
+          "priority": "CRITICAL",
+          "estimatedEffort": 20,
+          "dependencies": ["BACK-021", "BACK-019", "BACK-020"],
+          "description": "Production deployment and validation"
+        }
+      ]
+    },
+    "complianceTasks": {
+      "count": 8,
+      "tasks": [
+        {
+          "taskId": "COMP-001",
+          "taskName": "HIPAA Technical Safeguards Implementation",
+          "phase": "all",
+          "priority": "CRITICAL",
+          "estimatedEffort": 20,
+          "description": "HIPAA audit logging, encryption, access controls"
+        },
+        {
+          "taskId": "COMP-002",
+          "taskName": "BMDC Healthcare Provider Verification",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 16,
+          "description": "Bangladesh Medical & Dental Council verification"
+        },
+        {
+          "taskId": "COMP-003",
+          "taskName": "Bangladesh Digital Security Act Compliance",
+          "phase": "all",
+          "priority": "CRITICAL",
+          "estimatedEffort": 18,
+          "description": "Local jurisdiction data protection compliance"
+        },
+        {
+          "taskId": "COMP-004",
+          "taskName": "GDPR Data Protection Implementation",
+          "phase": "all",
+          "priority": "CRITICAL",
+          "estimatedEffort": 16,
+          "description": "Consent management, data export, right to be forgotten"
+        },
+        {
+          "taskId": "COMP-005",
+          "taskName": "Zero Trust Security Framework",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 24,
+          "description": "Authentication, authorization, encryption patterns"
+        },
+        {
+          "taskId": "COMP-006",
+          "taskName": "E2EE Implementation Framework",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 20,
+          "description": "Agora SFrame implementation for telemedicine"
+        },
+        {
+          "taskId": "COMP-007",
+          "taskName": "Testing Strategy for Healthcare",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 20,
+          "description": "Test pyramid for healthcare microservices"
+        },
+        {
+          "taskId": "COMP-008",
+          "taskName": "Deployment Strategy & Monitoring",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 18,
+          "description": "Docker, Kubernetes, monitoring setup"
+        }
+      ]
+    },
+    "culturalAndIntegrationTasks": {
+      "count": 13,
+      "tasks": [
+        {
+          "taskId": "CULT-001",
+          "taskName": "Bengali Language Interface Implementation",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 24,
+          "description": "i18n, Bengali locale support"
+        },
+        {
+          "taskId": "CULT-002",
+          "taskName": "Healthcare Cultural Norms Integration",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 20,
+          "description": "Family consent, traditional medicine integration"
+        },
+        {
+          "taskId": "INT-001",
+          "taskName": "Agora RTC Integration",
+          "phase": "all",
+          "priority": "CRITICAL",
+          "estimatedEffort": 16,
+          "description": "WebRTC video conferencing setup"
+        },
+        {
+          "taskId": "INT-002",
+          "taskName": "Payment Gateway Integration",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 14,
+          "description": "bKash and SSLCommerz integration"
+        },
+        {
+          "taskId": "INT-003",
+          "taskName": "Real-time Coordination",
+          "phase": "all",
+          "priority": "MEDIUM",
+          "estimatedEffort": 18,
+          "description": "Socket.IO and Redis pub/sub patterns"
+        },
+        {
+          "taskId": "INT-004",
+          "taskName": "Service Orchestration",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 20,
+          "description": "MCP task coordination patterns"
+        },
+        {
+          "taskId": "INT-005",
+          "taskName": "Healthcare API Standardization",
+          "phase": "all",
+          "priority": "MEDIUM",
+          "estimatedEffort": 16,
+          "description": "FHIR R4 API standards"
+        },
+        {
+          "taskId": "INT-006",
+          "taskName": "Database Migration Strategy",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 14,
+          "description": "Schema evolution and migration patterns"
+        },
+        {
+          "taskId": "SEC-001",
+          "taskName": "E2EE Framework Setup",
+          "phase": "all",
+          "priority": "CRITICAL",
+          "estimatedEffort": 18,
+          "description": "End-to-end encryption for communications"
+        },
+        {
+          "taskId": "INFRA-001",
+          "taskName": "Docker Containerization",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 12,
+          "description": "Docker setup for all services"
+        },
+        {
+          "taskId": "INFRA-002",
+          "taskName": "Kubernetes Orchestration",
+          "phase": "all",
+          "priority": "MEDIUM",
+          "estimatedEffort": 16,
+          "description": "K8s deployment configuration"
+        },
+        {
+          "taskId": "INFRA-003",
+          "taskName": "Monitoring & Alerting",
+          "phase": "all",
+          "priority": "HIGH",
+          "estimatedEffort": 14,
+          "description": "Prometheus, Grafana setup"
+        },
+        {
+          "taskId": "INFRA-004",
+          "taskName": "CI/CD Pipeline Setup",
+          "phase": "all",
+          "priority": "MEDIUM",
+          "estimatedEffort": 12,
+          "description": "GitHub Actions workflow automation"
+        }
+      ]
+    }
+  },
+
+  "serviceDependencies": {
+    "criticalPath": [
+      "auth-service (FOUNDATION)",
+      "patient-management (depends on auth)",
+      "telemedicine (depends on auth + patient-mgmt)",
+      "audit-logging (depends on auth, enables compliance)"
+    ],
+    "dependencyGraph": {
+      "auth-service": [
+        "patient-management",
+        "telemedicine",
+        "prescription",
+        "payment",
+        "notification",
+        "logistics-tracking",
+        "medicine-verification",
+        "loyalty-rewards",
+        "audit-logging"
+      ],
+      "patient-management": [
+        "telemedicine",
+        "prescription",
+        "loyalty-rewards"
+      ],
+      "telemedicine": [
+        "audit-logging"
+      ],
+      "audit-logging": [],
+      "payment": [
+        "loyalty-rewards"
+      ],
+      "notification": [],
+      "prescription": [
+        "notification"
+      ],
+      "logistics-tracking": [],
+      "medicine-verification": [],
+      "loyalty-rewards": []
+    }
+  },
+
+  "phaseProgression": {
+    "backend": {
+      "phase1Scaffold": {
+        "description": "Initialize service structure, Express app, database schema, basic endpoints",
+        "estimatedDuration": "2-3 hours per service",
+        "successCriteria": ["Express app starts", "DB connection works", "Basic health endpoint responds"]
+      },
+      "phase2Implement": {
+        "description": "Core business logic, full database integration, third-party APIs",
+        "estimatedDuration": "3-5 hours per service",
+        "successCriteria": ["All endpoints functional", "Business logic complete", "Database queries working"]
+      },
+      "phase3Test": {
+        "description": "Unit tests, integration tests, compliance validation",
+        "estimatedDuration": "2-3 hours per service",
+        "successCriteria": [">80% test coverage", "Integration tests pass", "Compliance checks pass"]
+      },
+      "phase4Deploy": {
+        "description": "Docker image, deployment configuration, production validation",
+        "estimatedDuration": "1-2 hours per service",
+        "successCriteria": ["Docker image builds", "Deployed to staging", "Health checks pass"]
+      }
+    },
+    "frontend": {
+      "phase1Scaffold": {
+        "description": "Initialize Next.js project, auth setup, basic layouts",
+        "estimatedDuration": "2-3 hours per app",
+        "successCriteria": ["Next.js app runs", "Auth flow wired", "Layout components render"]
+      },
+      "phase2Implement": {
+        "description": "Core UI components, API integration, business logic",
+        "estimatedDuration": "3-4 hours per app",
+        "successCriteria": ["All pages functional", "API integration works", "User flows complete"]
+      },
+      "phase3Test": {
+        "description": "Unit tests, E2E tests, accessibility testing",
+        "estimatedDuration": "2-3 hours per app",
+        "successCriteria": ["Unit tests pass", "E2E tests pass", "A11y compliant"]
+      }
+    }
+  },
+
+  "promptGenerationPlan": {
+    "backendServicePrompts": 44,
+    "frontendApplicationPrompts": 18,
+    "crossCuttingPrompts": 8,
+    "integrationPrompts": 4,
+    "totalPrompts": 74,
+    "promptsPerService": {
+      "backend": {
+        "auth-service": 4,
+        "patient-management": 4,
+        "telemedicine": 4,
+        "telemedicine-db": 4,
+        "prescription": 4,
+        "payment": 4,
+        "notification": 4,
+        "logistics-tracking": 4,
+        "medicine-verification": 4,
+        "loyalty-rewards": 4,
+        "audit-logging": 4
+      },
+      "frontend": {
+        "patient-portal": 3,
+        "provider-console": 3,
+        "pharmacy-portal": 3,
+        "pharma-portal": 3,
+        "chw-companion": 3,
+        "admin-console": 3
+      }
+    }
+  },
+
+  "qualityMetrics": {
+    "taskCoverageTarget": 1.0,
+    "taskCoverageActual": 1.0,
+    "prompts": 74,
+    "services": 17,
+    "avgPromptsPerService": 4.35,
+    "expectedQualityScore": 0.91,
+    "confidenceLevel": 0.94
+  },
+
+  "nextSteps": [
+    "Define JPSA directory structure",
+    "Create phase-progression prompt templates",
+    "Generate backend service prompts (44 prompts)",
+    "Generate frontend application prompts (18 prompts)",
+    "Create cross-cutting concern prompts (8 prompts)",
+    "Create integration prompts (4 prompts)",
+    "Build comprehensive MCP task-to-prompt mapping",
+    "Generate JPSA agent manifest",
+    "Create JPSA agent prompt (PEA v2.0 framework)",
+    "Generate JPSA documentation"
+  ]
+}
