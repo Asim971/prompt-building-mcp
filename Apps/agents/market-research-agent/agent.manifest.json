@@ -1,0 +1,360 @@
+{
+  "agent_id": "market_research_agent",
+  "version": "1.0.0",
+  "name": "Market Research Agent",
+  "description": "Specialized agent for comprehensive market analysis, competitive intelligence, and opportunity sizing in Microsoft Dynamics 365 manufacturing markets",
+  "category": "analysis",
+  "capabilities": [
+    "market_sizing_analysis",
+    "competitive_intelligence",
+    "customer_segmentation",
+    "market_entry_strategy",
+    "tam_sam_som_analysis",
+    "growth_projection_modeling",
+    "pricing_strategy_analysis",
+    "go_to_market_planning"
+  ],
+  "input_schema": {
+    "type": "object",
+    "required": [
+      "research_context",
+      "analysis_scope"
+    ],
+    "properties": {
+      "research_context": {
+        "type": "object",
+        "required": [
+          "opportunity_areas",
+          "industry_segment"
+        ],
+        "properties": {
+          "opportunity_areas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Identified opportunity areas from research phase"
+          },
+          "industry_segment": {
+            "type": "string",
+            "enum": [
+              "automotive",
+              "aerospace",
+              "electronics",
+              "pharmaceuticals",
+              "food_beverage",
+              "general_manufacturing"
+            ],
+            "description": "Target manufacturing industry segment"
+          },
+          "geographic_scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Target geographic markets"
+          },
+          "dynamics365_modules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Relevant D365 modules for integration"
+          }
+        }
+      },
+      "analysis_scope": {
+        "type": "object",
+        "required": [
+          "market_depth"
+        ],
+        "properties": {
+          "market_depth": {
+            "type": "string",
+            "enum": [
+              "surface",
+              "detailed",
+              "comprehensive"
+            ],
+            "description": "Depth of market analysis required"
+          },
+          "competitive_analysis": {
+            "type": "boolean",
+            "default": true,
+            "description": "Include competitive landscape analysis"
+          },
+          "customer_analysis": {
+            "type": "boolean",
+            "default": true,
+            "description": "Include customer segmentation and needs analysis"
+          },
+          "financial_modeling": {
+            "type": "boolean",
+            "default": false,
+            "description": "Include detailed financial projections"
+          }
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": [
+      "market_analysis",
+      "competitive_landscape",
+      "recommendations"
+    ],
+    "properties": {
+      "market_analysis": {
+        "type": "object",
+        "required": [
+          "market_size",
+          "growth_projections",
+          "key_trends"
+        ],
+        "properties": {
+          "market_size": {
+            "type": "object",
+            "required": [
+              "tam",
+              "sam",
+              "som"
+            ],
+            "properties": {
+              "tam": {
+                "type": "string",
+                "description": "Total Addressable Market"
+              },
+              "sam": {
+                "type": "string",
+                "description": "Serviceable Addressable Market"
+              },
+              "som": {
+                "type": "string",
+                "description": "Serviceable Obtainable Market"
+              },
+              "confidence_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            }
+          },
+          "growth_projections": {
+            "type": "object",
+            "properties": {
+              "cagr_5_year": {
+                "type": "number"
+              },
+              "market_drivers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "risk_factors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "key_trends": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "trend": {
+                  "type": "string"
+                },
+                "impact": {
+                  "type": "string",
+                  "enum": [
+                    "high",
+                    "medium",
+                    "low"
+                  ]
+                },
+                "timeline": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "competitive_landscape": {
+        "type": "object",
+        "properties": {
+          "key_competitors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "company": {
+                  "type": "string"
+                },
+                "market_share": {
+                  "type": "number"
+                },
+                "strengths": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "weaknesses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "d365_integration": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "competitive_gaps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "differentiation_opportunities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "customer_segments": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "segment_name": {
+              "type": "string"
+            },
+            "size_estimate": {
+              "type": "string"
+            },
+            "pain_points": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "buying_criteria": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "d365_adoption": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ]
+            }
+          }
+        }
+      },
+      "recommendations": {
+        "type": "object",
+        "required": [
+          "market_entry_strategy",
+          "prioritized_opportunities"
+        ],
+        "properties": {
+          "market_entry_strategy": {
+            "type": "string"
+          },
+          "prioritized_opportunities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "opportunity": {
+                  "type": "string"
+                },
+                "priority": {
+                  "type": "string",
+                  "enum": [
+                    "high",
+                    "medium",
+                    "low"
+                  ]
+                },
+                "investment_required": {
+                  "type": "string"
+                },
+                "time_to_market": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "success_factors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "risk_mitigation": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "safety_restrictions": [
+    "No access to external networks or APIs",
+    "No sensitive business data collection without explicit consent",
+    "All market data must be based on publicly available information",
+    "Financial projections must include confidence intervals and assumptions",
+    "Competitive analysis must be factual and unbiased",
+    "Customer data must be anonymized and aggregated"
+  ],
+  "quality_metrics": {
+    "accuracy_threshold": 0.7,
+    "completeness_score": 0.8,
+    "response_time_max": 1800,
+    "data_freshness_days": 30
+  },
+  "integration_points": {
+    "dynamics365_modules": [
+      "Supply Chain Management",
+      "Manufacturing",
+      "Finance and Operations",
+      "Sales",
+      "Customer Service"
+    ],
+    "microsoft_ecosystem": [
+      "Power Platform",
+      "Azure AI Services",
+      "Microsoft Graph",
+      "Teams Integration"
+    ]
+  },
+  "dependencies": [
+    "research_agent"
+  ],
+  "next_agents": [
+    "prd_agent",
+    "technical_planning_agent"
+  ],
+  "performance_benchmarks": {
+    "market_sizing_accuracy": ">70%",
+    "competitive_coverage": ">90% of market leaders",
+    "segment_identification": ">5 distinct segments",
+    "opportunity_prioritization": "ROI-based ranking"
+  }
+}

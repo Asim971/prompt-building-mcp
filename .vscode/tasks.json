@@ -1,0 +1,90 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Validate Agent Manifests",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Get-ChildItem -Path 'Apps/agents/*/agent.manifest.json' -Recurse | ForEach-Object { Write-Host \"Validating: $($_.FullName)\"; Get-Content $_.FullName | ConvertFrom-Json | Out-Null; if ($?) { Write-Host \"✓ Valid JSON\" -ForegroundColor Green } else { Write-Host \"✗ Invalid JSON\" -ForegroundColor Red } }"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Workflow Validation",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Write-Host 'Validating workflow definitions...'; Get-ChildItem -Path 'Workflows' -Filter '*.md' -Recurse | ForEach-Object { Write-Host \"Checking: $($_.Name)\" -ForegroundColor Cyan; if ((Get-Content $_.FullName | Select-String 'workflow_id:').Count -gt 0) { Write-Host \"✓ Valid workflow structure\" -ForegroundColor Green } else { Write-Host \"✗ Missing workflow_id\" -ForegroundColor Red } }"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Initialize New Analysis",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "$timestamp = Get-Date -Format 'yyyy-MM-dd-HHmm'; $analysisDir = \"Data/outputs/analysis-$timestamp\"; New-Item -ItemType Directory -Path $analysisDir -Force; Write-Host \"Created analysis directory: $analysisDir\" -ForegroundColor Green; Write-Host \"Ready for new agentic journey analysis\" -ForegroundColor Cyan"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Generate Analysis Report",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Write-Host 'Generating analysis summary...' -ForegroundColor Cyan; $outputFiles = Get-ChildItem -Path 'Data/outputs' -Filter '*.json' -Recurse; Write-Host \"Found $($outputFiles.Count) analysis files\"; $outputFiles | ForEach-Object { Write-Host \"- $($_.Name)\" }; Write-Host 'Analysis report generation complete' -ForegroundColor Green"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Clean Temporary Files",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Write-Host 'Cleaning temporary analysis files...' -ForegroundColor Yellow; Get-ChildItem -Path 'Data/outputs' -Filter '*temp*' -Recurse | Remove-Item -Force -Recurse; Write-Host 'Cleanup complete' -ForegroundColor Green"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

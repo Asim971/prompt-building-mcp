@@ -1,0 +1,286 @@
+{
+    "id": "prd_agent",
+    "version": "1.0.0",
+    "capabilities": [
+        "prd_generation",
+        "requirements_analysis",
+        "stakeholder_mapping",
+        "success_metrics"
+    ],
+    "input_schema": {
+        "type": "object",
+        "required": [
+            "opportunity_data",
+            "market_context",
+            "technical_constraints",
+            "business_requirements"
+        ],
+        "properties": {
+            "opportunity_data": {
+                "type": "object",
+                "properties": {
+                    "opportunity_name": {
+                        "type": "string"
+                    },
+                    "market_gap": {
+                        "type": "string"
+                    },
+                    "target_customers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "competitive_advantage": {
+                        "type": "string"
+                    }
+                }
+            },
+            "market_context": {
+                "type": "object",
+                "properties": {
+                    "industry_segment": {
+                        "type": "string"
+                    },
+                    "geographic_scope": {
+                        "type": "string"
+                    },
+                    "market_size": {
+                        "type": "string"
+                    },
+                    "growth_projections": {
+                        "type": "string"
+                    }
+                }
+            },
+            "technical_constraints": {
+                "type": "object",
+                "properties": {
+                    "dynamics365_integration": {
+                        "type": "boolean"
+                    },
+                    "platform_requirements": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "security_requirements": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "compliance_standards": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "business_requirements": {
+                "type": "object",
+                "properties": {
+                    "revenue_model": {
+                        "type": "string"
+                    },
+                    "target_timeline": {
+                        "type": "string"
+                    },
+                    "investment_constraints": {
+                        "type": "string"
+                    },
+                    "success_criteria": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "output_schema": {
+        "type": "object",
+        "required": [
+            "executive_summary",
+            "product_overview",
+            "functional_requirements",
+            "non_functional_requirements",
+            "stakeholder_analysis",
+            "success_metrics",
+            "roadmap_outline"
+        ],
+        "properties": {
+            "executive_summary": {
+                "type": "object",
+                "properties": {
+                    "product_vision": {
+                        "type": "string"
+                    },
+                    "business_value": {
+                        "type": "string"
+                    },
+                    "key_differentiators": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "investment_requirements": {
+                        "type": "string"
+                    }
+                }
+            },
+            "product_overview": {
+                "type": "object",
+                "properties": {
+                    "product_name": {
+                        "type": "string"
+                    },
+                    "target_market": {
+                        "type": "string"
+                    },
+                    "core_functionality": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "integration_points": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "functional_requirements": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "requirement_id": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string"
+                        },
+                        "priority": {
+                            "type": "string",
+                            "enum": [
+                                "must-have",
+                                "should-have",
+                                "nice-to-have"
+                            ]
+                        },
+                        "acceptance_criteria": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "non_functional_requirements": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "category": {
+                            "type": "string"
+                        },
+                        "requirement": {
+                            "type": "string"
+                        },
+                        "metrics": {
+                            "type": "string"
+                        },
+                        "validation_method": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "stakeholder_analysis": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "stakeholder_group": {
+                            "type": "string"
+                        },
+                        "interests": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "influence": {
+                            "type": "string",
+                            "enum": [
+                                "high",
+                                "medium",
+                                "low"
+                            ]
+                        },
+                        "engagement_strategy": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "success_metrics": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "metric_name": {
+                            "type": "string"
+                        },
+                        "measurement_method": {
+                            "type": "string"
+                        },
+                        "target_value": {
+                            "type": "string"
+                        },
+                        "timeframe": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "roadmap_outline": {
+                "type": "object",
+                "properties": {
+                    "phase_1": {
+                        "type": "string"
+                    },
+                    "phase_2": {
+                        "type": "string"
+                    },
+                    "phase_3": {
+                        "type": "string"
+                    },
+                    "key_milestones": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "safety_restrictions": [
+        "no_network",
+        "no_fs_write",
+        "no_deletes"
+    ],
+    "max_response_chars": 15000
+}

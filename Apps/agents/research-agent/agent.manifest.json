@@ -1,0 +1,207 @@
+{
+    "agent_id": "research_agent",
+    "version": "1.0.0",
+    "name": "Research Agent",
+    "description": "Specialized agent for comprehensive market research, technology assessment, and opportunity identification in Microsoft Dynamics 365 manufacturing markets",
+    "category": "research",
+    "capabilities": [
+        "market_research",
+        "competitive_analysis",
+        "technology_assessment",
+        "opportunity_identification"
+    ],
+    "input_schema": {
+        "type": "object",
+        "required": [
+            "research_query",
+            "focus_area",
+            "scope",
+            "context"
+        ],
+        "properties": {
+            "research_query": {
+                "type": "string"
+            },
+            "focus_area": {
+                "type": "string"
+            },
+            "scope": {
+                "type": "string"
+            },
+            "context": {
+                "type": "object",
+                "properties": {
+                    "industry": {
+                        "type": "string"
+                    },
+                    "geography": {
+                        "type": "string"
+                    },
+                    "timeframe": {
+                        "type": "string"
+                    },
+                    "dynamics365_focus": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    },
+    "output_schema": {
+        "type": "object",
+        "required": [
+            "research_findings",
+            "opportunity_analysis",
+            "competitive_landscape",
+            "recommendations"
+        ],
+        "properties": {
+            "research_findings": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "finding": {
+                            "type": "string"
+                        },
+                        "evidence": {
+                            "type": "string"
+                        },
+                        "confidence": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                        },
+                        "sources": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "opportunity_analysis": {
+                "type": "object",
+                "properties": {
+                    "market_gaps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "unmet_needs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "isv_opportunities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "market_size": {
+                        "type": "string"
+                    }
+                }
+            },
+            "competitive_landscape": {
+                "type": "object",
+                "properties": {
+                    "existing_solutions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "competitive_gaps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "differentiation_opportunities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "recommendations": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "recommendation": {
+                            "type": "string"
+                        },
+                        "priority": {
+                            "type": "string",
+                            "enum": [
+                                "high",
+                                "medium",
+                                "low"
+                            ]
+                        },
+                        "effort": {
+                            "type": "string",
+                            "enum": [
+                                "low",
+                                "medium",
+                                "high"
+                            ]
+                        },
+                        "impact": {
+                            "type": "string",
+                            "enum": [
+                                "low",
+                                "medium",
+                                "high"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "safety_restrictions": [
+        "No access to external networks or proprietary databases",
+        "No collection of personal or confidential business information",
+        "All research must be based on publicly available information",
+        "Market estimates must include confidence intervals and data sources",
+        "Competitive analysis must be factual and unbiased"
+    ],
+    "quality_metrics": {
+        "accuracy_threshold": 0.7,
+        "completeness_score": 0.8,
+        "response_time_max": 1800,
+        "data_freshness_days": 30
+    },
+    "integration_points": {
+        "dynamics365_modules": [
+            "Supply Chain Management",
+            "Manufacturing",
+            "Finance and Operations",
+            "Sales"
+        ],
+        "microsoft_ecosystem": [
+            "Power Platform",
+            "Azure AI Services",
+            "Microsoft Graph"
+        ]
+    },
+    "dependencies": [],
+    "next_agents": [
+        "market_research_agent",
+        "prd_agent"
+    ],
+    "performance_benchmarks": {
+        "opportunity_identification": ">5 distinct opportunities",
+        "market_coverage": ">90% of relevant market segments",
+        "competitive_analysis": ">10 key competitors identified",
+        "research_depth": "Comprehensive industry analysis"
+    }
+}

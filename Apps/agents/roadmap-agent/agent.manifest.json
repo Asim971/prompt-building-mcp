@@ -1,0 +1,446 @@
+{
+  "agent_id": "roadmap_agent",
+  "version": "1.0.0",
+  "name": "Strategic Roadmap Agent",
+  "description": "Specialized agent for creating comprehensive strategic roadmaps, implementation timelines, and milestone planning for Microsoft Dynamics 365 manufacturing ISV opportunities",
+  "category": "planning",
+  "capabilities": [
+    "strategic_roadmap_development",
+    "milestone_planning",
+    "timeline_optimization",
+    "resource_planning",
+    "risk_assessment",
+    "go_to_market_strategy",
+    "investment_planning",
+    "success_metrics_definition"
+  ],
+  "input_schema": {
+    "type": "object",
+    "required": [
+      "opportunity_context",
+      "planning_parameters"
+    ],
+    "properties": {
+      "opportunity_context": {
+        "type": "object",
+        "required": [
+          "market_analysis",
+          "technical_requirements",
+          "business_objectives"
+        ],
+        "properties": {
+          "market_analysis": {
+            "type": "object",
+            "properties": {
+              "market_size": {
+                "type": "string"
+              },
+              "growth_projections": {
+                "type": "object"
+              },
+              "competitive_landscape": {
+                "type": "object"
+              },
+              "customer_segments": {
+                "type": "array"
+              }
+            }
+          },
+          "technical_requirements": {
+            "type": "object",
+            "properties": {
+              "solution_architecture": {
+                "type": "object"
+              },
+              "d365_integration_points": {
+                "type": "array"
+              },
+              "technology_stack": {
+                "type": "array"
+              },
+              "development_complexity": {
+                "type": "string"
+              }
+            }
+          },
+          "business_objectives": {
+            "type": "object",
+            "properties": {
+              "revenue_targets": {
+                "type": "object"
+              },
+              "market_share_goals": {
+                "type": "object"
+              },
+              "timeline_constraints": {
+                "type": "object"
+              },
+              "investment_budget": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "planning_parameters": {
+        "type": "object",
+        "required": [
+          "planning_horizon",
+          "resource_constraints"
+        ],
+        "properties": {
+          "planning_horizon": {
+            "type": "object",
+            "properties": {
+              "short_term_months": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 12
+              },
+              "medium_term_months": {
+                "type": "integer",
+                "minimum": 12,
+                "maximum": 36
+              },
+              "long_term_months": {
+                "type": "integer",
+                "minimum": 36,
+                "maximum": 60
+              }
+            }
+          },
+          "resource_constraints": {
+            "type": "object",
+            "properties": {
+              "budget_limits": {
+                "type": "object"
+              },
+              "team_size": {
+                "type": "integer"
+              },
+              "skill_availability": {
+                "type": "array"
+              },
+              "technology_constraints": {
+                "type": "array"
+              }
+            }
+          },
+          "risk_tolerance": {
+            "type": "string",
+            "enum": [
+              "conservative",
+              "moderate",
+              "aggressive"
+            ],
+            "default": "moderate"
+          },
+          "prioritization_criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": [
+              "roi",
+              "time_to_market",
+              "strategic_value",
+              "technical_feasibility"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": [
+      "executive_summary",
+      "strategic_roadmap",
+      "implementation_plan",
+      "success_metrics"
+    ],
+    "properties": {
+      "executive_summary": {
+        "type": "object",
+        "required": [
+          "strategic_vision",
+          "key_milestones",
+          "investment_summary"
+        ],
+        "properties": {
+          "strategic_vision": {
+            "type": "string"
+          },
+          "key_milestones": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "investment_summary": {
+            "type": "object",
+            "properties": {
+              "total_investment": {
+                "type": "string"
+              },
+              "expected_roi": {
+                "type": "string"
+              },
+              "payback_period": {
+                "type": "string"
+              }
+            }
+          },
+          "critical_success_factors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "strategic_roadmap": {
+        "type": "object",
+        "required": [
+          "phases",
+          "timeline"
+        ],
+        "properties": {
+          "phases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "phase_name": {
+                  "type": "string"
+                },
+                "duration_months": {
+                  "type": "integer"
+                },
+                "objectives": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "key_deliverables": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "success_criteria": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "dependencies": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "risks": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "timeline": {
+            "type": "object",
+            "properties": {
+              "start_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "major_milestones": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "milestone": {
+                      "type": "string"
+                    },
+                    "target_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "critical_path": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              },
+              "go_live_date": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        }
+      },
+      "implementation_plan": {
+        "type": "object",
+        "properties": {
+          "resource_allocation": {
+            "type": "object",
+            "properties": {
+              "team_structure": {
+                "type": "object"
+              },
+              "budget_allocation": {
+                "type": "object"
+              },
+              "technology_investments": {
+                "type": "array"
+              }
+            }
+          },
+          "go_to_market_strategy": {
+            "type": "object",
+            "properties": {
+              "market_entry_approach": {
+                "type": "string"
+              },
+              "pricing_strategy": {
+                "type": "object"
+              },
+              "channel_strategy": {
+                "type": "array"
+              },
+              "marketing_plan": {
+                "type": "object"
+              }
+            }
+          },
+          "risk_mitigation": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "risk": {
+                  "type": "string"
+                },
+                "probability": {
+                  "type": "string"
+                },
+                "impact": {
+                  "type": "string"
+                },
+                "mitigation_strategy": {
+                  "type": "string"
+                },
+                "contingency_plan": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "success_metrics": {
+        "type": "object",
+        "properties": {
+          "financial_metrics": {
+            "type": "object",
+            "properties": {
+              "revenue_targets": {
+                "type": "object"
+              },
+              "profitability_goals": {
+                "type": "object"
+              },
+              "customer_acquisition_cost": {
+                "type": "object"
+              },
+              "lifetime_value": {
+                "type": "object"
+              }
+            }
+          },
+          "operational_metrics": {
+            "type": "object",
+            "properties": {
+              "development_velocity": {
+                "type": "object"
+              },
+              "quality_indicators": {
+                "type": "object"
+              },
+              "customer_satisfaction": {
+                "type": "object"
+              },
+              "market_penetration": {
+                "type": "object"
+              }
+            }
+          },
+          "strategic_metrics": {
+            "type": "object",
+            "properties": {
+              "market_share": {
+                "type": "object"
+              },
+              "competitive_position": {
+                "type": "object"
+              },
+              "innovation_index": {
+                "type": "object"
+              },
+              "partnership_effectiveness": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "safety_restrictions": [
+    "No access to confidential competitive intelligence beyond public information",
+    "All financial projections must include assumptions and confidence intervals",
+    "Resource planning must respect organizational constraints and policies",
+    "Risk assessments must be realistic and evidence-based",
+    "Timeline estimates must account for known dependencies and constraints",
+    "All strategic recommendations must align with Microsoft partner guidelines"
+  ],
+  "quality_metrics": {
+    "plan_feasibility": 0.8,
+    "timeline_accuracy": 0.75,
+    "resource_optimization": 0.85,
+    "risk_coverage": 0.9
+  },
+  "integration_points": {
+    "dynamics365_modules": [
+      "Project Operations",
+      "Finance and Operations",
+      "Business Central",
+      "Power Platform"
+    ],
+    "microsoft_ecosystem": [
+      "Microsoft Partner Network",
+      "Azure DevOps",
+      "Power BI",
+      "Teams",
+      "Viva Goals"
+    ]
+  },
+  "dependencies": [
+    "market_research_agent",
+    "technical_planning_agent",
+    "prd_agent"
+  ],
+  "next_agents": [
+    "evaluator_agent"
+  ],
+  "performance_benchmarks": {
+    "planning_completeness": ">95%",
+    "milestone_accuracy": ">80%",
+    "resource_utilization": ">85%",
+    "risk_identification": ">90%"
+  }
+}

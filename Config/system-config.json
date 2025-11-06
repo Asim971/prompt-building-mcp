@@ -1,0 +1,164 @@
+{
+    "project": {
+        "name": "Dynamic360",
+        "version": "1.0.0",
+        "description": "Agentic Journey System for Dynamics 365 Manufacturing Analysis"
+    },
+    "agents": {
+        "default_config": {
+            "max_iterations": 3,
+            "timeout_minutes": 30,
+            "quality_threshold": 0.7,
+            "safety_enabled": true
+        },
+        "agent_specific": {
+            "research_agent": {
+                "max_response_chars": 12000,
+                "confidence_threshold": 0.6,
+                "market_focus": "manufacturing"
+            },
+            "prd_agent": {
+                "max_response_chars": 15000,
+                "template_version": "enterprise",
+                "validation_required": true
+            },
+            "technical_planning_agent": {
+                "max_response_chars": 12000,
+                "architecture_focus": "microsoft_ecosystem",
+                "integration_required": "dynamics365"
+            }
+        }
+    },
+    "workflows": {
+        "default_settings": {
+            "enable_logging": true,
+            "quality_gates": true,
+            "automatic_validation": true,
+            "iteration_limit": 3
+        },
+        "output_formats": {
+            "research": "structured_json",
+            "prd": "enterprise_document",
+            "technical": "architecture_specification"
+        }
+    },
+    "quality_assurance": {
+        "minimum_confidence": 0.6,
+        "stakeholder_review_required": true,
+        "technical_validation": true,
+        "business_validation": true,
+        "success_pattern_templates": {
+            "enabled": true,
+            "template_version": "2025-11-07",
+            "quality_benchmark": "95/100",
+            "template_adoption_target": 0.9,
+            "automated_validation": true
+        }
+    },
+    "success_patterns": {
+        "template_deployment": {
+            "research_template": {
+                "methodology": "8-dimensional D365 manufacturing gap analysis",
+                "quality_standard": 0.95,
+                "status": "deployed"
+            },
+            "prd_template": {
+                "methodology": "D365-native requirements with Microsoft ecosystem integration",
+                "quality_standard": 0.95,
+                "status": "deployed"
+            },
+            "technical_template": {
+                "methodology": "Azure-first architecture with microservices patterns", 
+                "quality_standard": 0.95,
+                "status": "deployed"
+            },
+            "roadmap_template": {
+                "methodology": "Microsoft partner ecosystem go-to-market strategy",
+                "quality_standard": 0.95,
+                "status": "deployed"
+            }
+        },
+        "efficiency_targets": {
+            "template_reuse_rate": 0.9,
+            "execution_time_reduction": 0.35,
+            "quality_consistency": 0.85,
+            "resource_optimization": 0.3
+        }
+    },
+    "integrations": {
+        "dynamics365": {
+            "modules": [
+                "finance",
+                "supply_chain",
+                "manufacturing",
+                "sales"
+            ],
+            "api_version": "v9.0",
+            "integration_patterns": [
+                "rest_api",
+                "odata",
+                "webhooks"
+            ]
+        },
+        "microsoft_ecosystem": {
+            "azure_services": [
+                "cognitive_services",
+                "power_platform",
+                "teams"
+            ],
+            "development_tools": [
+                "visual_studio",
+                "power_apps",
+                "power_automate"
+            ]
+        }
+    },
+    "partner_center_integration": {
+        "enabled": true,
+        "authentication": {
+            "tenant_id": "${MICROSOFT_TENANT_ID}",
+            "client_id": "${PARTNER_CENTER_CLIENT_ID}",
+            "client_secret": "${PARTNER_CENTER_CLIENT_SECRET}",
+            "scope": "https://api.partnercenter.microsoft.com/.default"
+        },
+        "api_endpoints": {
+            "marketplace_analytics": "https://api.partnercenter.microsoft.com/v1/analytics/marketplace/",
+            "partner_program": "https://api.partnercenter.microsoft.com/v1/partner/program/",
+            "ecosystem_monitoring": "https://api.partnercenter.microsoft.com/v1/ecosystem/dynamics365/",
+            "financial_intelligence": "https://api.partnercenter.microsoft.com/v1/analytics/"
+        },
+        "update_intervals": {
+            "market_intelligence": "hourly",
+            "ecosystem_updates": "daily",
+            "competitive_analysis": "weekly",
+            "financial_benchmarks": "daily"
+        },
+        "caching": {
+            "enabled": true,
+            "duration_minutes": 30,
+            "storage": "memory"
+        },
+        "real_time_enhancements": {
+            "research_phase": {
+                "market_intelligence_integration": true,
+                "competitive_analysis_integration": true,
+                "ecosystem_updates_integration": true
+            },
+            "prd_phase": {
+                "compliance_validation": true,
+                "pricing_intelligence": true,
+                "revenue_projection_updates": true
+            },
+            "technical_phase": {
+                "api_capability_monitoring": true,
+                "integration_pattern_updates": true,
+                "azure_service_recommendations": true
+            },
+            "roadmap_phase": {
+                "market_timing_optimization": true,
+                "partnership_opportunity_analysis": true,
+                "go_to_market_intelligence": true
+            }
+        }
+    }
+}

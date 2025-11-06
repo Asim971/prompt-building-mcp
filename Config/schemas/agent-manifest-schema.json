@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Manifest Schema",
+  "description": "Schema for Dynamic 360 agent manifest files",
+  "type": "object",
+  "required": [
+    "agent_id",
+    "version",
+    "name",
+    "description",
+    "category",
+    "capabilities",
+    "input_schema",
+    "output_schema",
+    "safety_restrictions"
+  ],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*[a-z0-9]$",
+      "description": "Unique identifier for the agent"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the agent"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100,
+      "description": "Human-readable name of the agent"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 500,
+      "description": "Detailed description of agent purpose and capabilities"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "research",
+        "analysis",
+        "generation",
+        "planning",
+        "evaluation",
+        "orchestration"
+      ],
+      "description": "Primary category of the agent"
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*[a-z0-9]$"
+      },
+      "description": "List of specific capabilities the agent provides"
+    },
+    "input_schema": {
+      "type": "object",
+      "description": "JSON schema defining expected input structure"
+    },
+    "output_schema": {
+      "type": "object",
+      "description": "JSON schema defining expected output structure"
+    },
+    "safety_restrictions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "List of safety and compliance restrictions"
+    },
+    "quality_metrics": {
+      "type": "object",
+      "properties": {
+        "accuracy_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "completeness_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "response_time_max": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "data_freshness_days": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "description": "Quality metrics and thresholds for the agent"
+    },
+    "integration_points": {
+      "type": "object",
+      "properties": {
+        "dynamics365_modules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "microsoft_ecosystem": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Microsoft Dynamics 365 and ecosystem integration points"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*[a-z0-9]$"
+      },
+      "description": "List of agent dependencies"
+    },
+    "next_agents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*[a-z0-9]$"
+      },
+      "description": "List of agents that typically follow this agent in workflows"
+    },
+    "performance_benchmarks": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-z][a-z0-9_]*[a-z0-9]$": {
+          "type": "string"
+        }
+      },
+      "description": "Performance benchmarks and success criteria"
+    }
+  },
+  "additionalProperties": false
+}

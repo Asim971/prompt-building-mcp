@@ -1,0 +1,378 @@
+{
+  "agent_id": "evaluator_agent",
+  "version": "1.0.0",
+  "name": "Quality Evaluation Agent",
+  "description": "Specialized agent for quality assessment, validation, and continuous improvement of agentic journey outputs in Microsoft Dynamics 365 manufacturing analysis",
+  "category": "evaluation",
+  "capabilities": [
+    "output_quality_assessment",
+    "data_validation",
+    "completeness_evaluation",
+    "accuracy_scoring",
+    "bias_detection",
+    "consistency_checking",
+    "improvement_recommendations",
+    "benchmark_comparison"
+  ],
+  "input_schema": {
+    "type": "object",
+    "required": [
+      "evaluation_target",
+      "quality_criteria"
+    ],
+    "properties": {
+      "evaluation_target": {
+        "type": "object",
+        "required": [
+          "agent_output",
+          "source_agent"
+        ],
+        "properties": {
+          "agent_output": {
+            "type": "object",
+            "description": "Output from agent to be evaluated"
+          },
+          "source_agent": {
+            "type": "string",
+            "description": "ID of the agent that produced the output"
+          },
+          "workflow_context": {
+            "type": "object",
+            "properties": {
+              "workflow_id": {
+                "type": "string"
+              },
+              "stage": {
+                "type": "string"
+              },
+              "previous_evaluations": {
+                "type": "array"
+              }
+            }
+          },
+          "expected_schema": {
+            "type": "object",
+            "description": "Expected output schema for validation"
+          }
+        }
+      },
+      "quality_criteria": {
+        "type": "object",
+        "required": [
+          "evaluation_dimensions"
+        ],
+        "properties": {
+          "evaluation_dimensions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "accuracy",
+                "completeness",
+                "consistency",
+                "relevance",
+                "clarity",
+                "actionability",
+                "bias",
+                "compliance"
+              ]
+            },
+            "description": "Dimensions to evaluate"
+          },
+          "scoring_method": {
+            "type": "string",
+            "enum": [
+              "weighted",
+              "binary",
+              "scaled"
+            ],
+            "default": "weighted",
+            "description": "Method for scoring evaluation"
+          },
+          "benchmark_comparison": {
+            "type": "boolean",
+            "default": true,
+            "description": "Compare against established benchmarks"
+          },
+          "improvement_suggestions": {
+            "type": "boolean",
+            "default": true,
+            "description": "Provide specific improvement recommendations"
+          }
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": [
+      "evaluation_summary",
+      "quality_scores",
+      "validation_results"
+    ],
+    "properties": {
+      "evaluation_summary": {
+        "type": "object",
+        "required": [
+          "overall_score",
+          "overall_assessment",
+          "key_findings"
+        ],
+        "properties": {
+          "overall_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Overall quality score (0-1)"
+          },
+          "overall_assessment": {
+            "type": "string",
+            "enum": [
+              "excellent",
+              "good",
+              "satisfactory",
+              "needs_improvement",
+              "inadequate"
+            ],
+            "description": "Qualitative overall assessment"
+          },
+          "key_findings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Most important evaluation findings"
+          },
+          "recommendation": {
+            "type": "string",
+            "enum": [
+              "approve",
+              "approve_with_conditions",
+              "revise_and_resubmit",
+              "reject"
+            ],
+            "description": "Recommendation for next steps"
+          }
+        }
+      },
+      "quality_scores": {
+        "type": "object",
+        "patternProperties": {
+          "^[a-z_]+$": {
+            "type": "object",
+            "properties": {
+              "score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "assessment": {
+                "type": "string"
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "description": "Detailed scores for each evaluation dimension"
+      },
+      "validation_results": {
+        "type": "object",
+        "required": [
+          "schema_compliance",
+          "data_quality"
+        ],
+        "properties": {
+          "schema_compliance": {
+            "type": "object",
+            "properties": {
+              "is_compliant": {
+                "type": "boolean"
+              },
+              "validation_errors": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "missing_fields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "invalid_values": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "data_quality": {
+            "type": "object",
+            "properties": {
+              "completeness_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "accuracy_indicators": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "consistency_issues": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "data_freshness": {
+                "type": "string"
+              }
+            }
+          },
+          "bias_assessment": {
+            "type": "object",
+            "properties": {
+              "bias_detected": {
+                "type": "boolean"
+              },
+              "bias_types": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "mitigation_suggestions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "improvement_recommendations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "category": {
+              "type": "string"
+            },
+            "priority": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ]
+            },
+            "recommendation": {
+              "type": "string"
+            },
+            "implementation_effort": {
+              "type": "string"
+            },
+            "expected_impact": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "benchmark_comparison": {
+        "type": "object",
+        "properties": {
+          "industry_standards": {
+            "type": "object",
+            "properties": {
+              "meets_standards": {
+                "type": "boolean"
+              },
+              "benchmark_scores": {
+                "type": "object"
+              },
+              "gap_analysis": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "historical_performance": {
+            "type": "object",
+            "properties": {
+              "trend": {
+                "type": "string",
+                "enum": [
+                  "improving",
+                  "stable",
+                  "declining"
+                ]
+              },
+              "performance_delta": {
+                "type": "number"
+              },
+              "peer_comparison": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "safety_restrictions": [
+    "No modification of original agent outputs during evaluation",
+    "Maintain objectivity and avoid personal bias in assessments",
+    "Protect confidential information in evaluation reports",
+    "Only evaluate outputs within authorized scope and permissions",
+    "Document all evaluation criteria and methodologies transparently",
+    "Ensure evaluation feedback is constructive and actionable"
+  ],
+  "quality_metrics": {
+    "evaluation_consistency": 0.9,
+    "false_positive_rate": 0.05,
+    "assessment_coverage": 0.95,
+    "recommendation_actionability": 0.8
+  },
+  "integration_points": {
+    "dynamics365_modules": [
+      "Data Management",
+      "Business Intelligence",
+      "Quality Management"
+    ],
+    "microsoft_ecosystem": [
+      "Power BI",
+      "Azure Monitor",
+      "Application Insights",
+      "Power Automate"
+    ]
+  },
+  "dependencies": [
+    "all_agents"
+  ],
+  "next_agents": [
+    "workflow_orchestrator"
+  ],
+  "performance_benchmarks": {
+    "evaluation_accuracy": ">90%",
+    "assessment_completeness": ">95%",
+    "recommendation_relevance": ">85%",
+    "evaluation_speed": "<5 minutes per output"
+  }
+}

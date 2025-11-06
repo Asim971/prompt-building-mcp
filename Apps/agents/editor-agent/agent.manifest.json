@@ -1,0 +1,73 @@
+{
+    "id": "editor_agent",
+    "version": "1.0.0",
+    "capabilities": [
+        "prompt_refinement",
+        "structure_enforcement",
+        "formatting",
+        "example_injection"
+    ],
+    "input_schema": {
+        "type": "object",
+        "required": [
+            "user_input",
+            "previous_model_output",
+            "analysis",
+            "user_tag"
+        ],
+        "properties": {
+            "user_input": {
+                "type": "string"
+            },
+            "previous_model_output": {
+                "type": "string"
+            },
+            "analysis": {
+                "type": "object"
+            },
+            "user_tag": {
+                "type": "string",
+                "enum": [
+                    "accurate",
+                    "needs_depth",
+                    "off_topic",
+                    "hallucination",
+                    "unsafe",
+                    "wrong_format",
+                    "incomplete"
+                ]
+            }
+        }
+    },
+    "output_schema": {
+        "type": "object",
+        "required": [
+            "optimized_prompt",
+            "rationale",
+            "improvements"
+        ],
+        "properties": {
+            "optimized_prompt": {
+                "type": "string"
+            },
+            "rationale": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "improvements": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "safety_restrictions": [
+        "no_network",
+        "no_fs_write",
+        "no_deletes"
+    ],
+    "max_response_chars": 8000
+}

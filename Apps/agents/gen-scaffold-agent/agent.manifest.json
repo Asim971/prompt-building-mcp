@@ -1,0 +1,209 @@
+{
+  "id": "gen-scaffold-agent",
+  "version": "1.0.0",
+  "capabilities": [
+    "scaffold_generation",
+    "project_initialization",
+    "d365_manufacturing_integration",
+    "workflow_orchestration",
+    "documentation_generation"
+  ],
+  "input_schema": {
+    "type": "object",
+    "required": [
+      "project_name",
+      "project_type",
+      "focus_domain",
+      "requirements"
+    ],
+    "properties": {
+      "project_name": {
+        "type": "string"
+      },
+      "project_type": {
+        "type": "string",
+        "enum": [
+          "agentic_journey",
+          "analysis_platform",
+          "research_system"
+        ]
+      },
+      "focus_domain": {
+        "type": "string"
+      },
+      "requirements": {
+        "type": "object",
+        "properties": {
+          "agents_needed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "workflows_needed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "integration_requirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "quality_gates": {
+            "type": "boolean"
+          },
+          "documentation_level": {
+            "type": "string",
+            "enum": [
+              "basic",
+              "comprehensive",
+              "enterprise"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": [
+      "project_structure",
+      "agents_created",
+      "workflows_created",
+      "documentation_generated",
+      "setup_instructions"
+    ],
+    "properties": {
+      "project_structure": {
+        "type": "object",
+        "properties": {
+          "directories_created": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "files_created": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "configuration_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "agents_created": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "agent_id": {
+              "type": "string"
+            },
+            "capabilities": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "manifest_path": {
+              "type": "string"
+            },
+            "prompt_path": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "workflows_created": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "workflow_id": {
+              "type": "string"
+            },
+            "workflow_type": {
+              "type": "string"
+            },
+            "file_path": {
+              "type": "string"
+            },
+            "quality_gates": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "documentation_generated": {
+        "type": "object",
+        "properties": {
+          "readme_files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "usage_guides": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "api_documentation": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "setup_instructions": {
+        "type": "object",
+        "properties": {
+          "prerequisites": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "installation_steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "validation_tasks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "safety_restrictions": [
+    "no_network",
+    "no_fs_write",
+    "no_deletes"
+  ],
+  "max_response_chars": 20000
+}

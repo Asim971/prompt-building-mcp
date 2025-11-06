@@ -1,0 +1,91 @@
+{
+  "iteration_id": "550e8400-e29b-41d4-a716-446655440000",
+  "timestamp": "2025-11-07T10:30:00Z",
+  "selected_agent": "evaluator_agent",
+  "scaffold_plan": {
+    "create_agent": false,
+    "new_agent_id": null,
+    "files": [
+      {
+        "path": "Prompts/next_prompt_evaluator_agent_comprehensive.md",
+        "content": "Comprehensive evaluator agent prompt for success pattern extraction"
+      },
+      {
+        "path": "Prompts/template-extraction-framework.md", 
+        "content": "Framework for extracting reusable methodology templates from exceptional execution"
+      }
+    ]
+  },
+  "next_prompt": {
+    "agent_id": "evaluator_agent",
+    "phase": "success_pattern_extraction",
+    "context": {
+      "source_analysis": "Complete 4-phase Dynamic 360 agentic journey execution",
+      "quality_score": 95,
+      "user_tag": "excellent",
+      "d365_manufacturing_focus": true,
+      "isv_portfolio_value": "$47.5M ARR"
+    },
+    "objectives": [
+      "Extract reusable methodology templates from exceptional 4-phase execution",
+      "Document success patterns for D365 manufacturing ISV analysis",
+      "Create standardized workflows for future agentic journeys",
+      "Validate quality framework and continuous improvement patterns"
+    ],
+    "constraints": [
+      "Maintain 100% D365 manufacturing context alignment",
+      "Ensure backward compatibility with existing agent manifests",
+      "Preserve 95/100 quality standards in extracted templates",
+      "Follow all Dynamic 360 safety and compliance requirements"
+    ],
+    "expected_outputs": [
+      "Four comprehensive phase templates (Research, PRD, Technical, Strategic)",
+      "Quality framework documentation with success criteria",
+      "Workflow standardization with validation procedures",
+      "Success patterns registry for future reference"
+    ]
+  },
+  "analysis": {
+    "structural_errors": [],
+    "factual_errors": [],
+    "tone_mismatch": false,
+    "missing_steps": [],
+    "contradictions": [],
+    "capability_gaps": [],
+    "confidence_estimate": 0.95,
+    "urgency": 85
+  },
+  "checks_passed": true,
+  "log_record": {
+    "iteration_id": "550e8400-e29b-41d4-a716-446655440000",
+    "timestamp": "2025-11-07T10:30:00Z",
+    "user_tag": "excellent",
+    "quality_score": 95,
+    "source_agent": "multiple_agents_orchestration",
+    "selected_specialist": "evaluator_agent",
+    "routing_confidence": 0.95,
+    "analysis_dimensions": {
+      "accuracy": 0.9,
+      "completeness": 1.0,
+      "structure": 1.0,
+      "reasoning": 0.9,
+      "tone": 0.9,
+      "alignment": 1.0,
+      "usability": 0.9,
+      "compliance": 1.0
+    },
+    "success_factors": [
+      "Systematic 4-phase progression with comprehensive deliverables",
+      "Complete business case development for $47.5M ISV opportunity",
+      "Implementation-ready technical specifications",
+      "Exceptional Microsoft D365 ecosystem alignment"
+    ],
+    "improvement_achieved": "Complete agentic journey methodology validated with 95/100 quality score",
+    "d365_manufacturing_impact": {
+      "portfolio_value": "$47.5M ARR potential",
+      "implementation_readiness": "100% ready for execution",
+      "microsoft_ecosystem_alignment": "Native D365 integration with Azure differentiation"
+    }
+  },
+  "lesson_file": "Prompts/lessons/feedback-2025-11-07-1030-complete-journey.json"
+}

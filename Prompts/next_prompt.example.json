@@ -1,0 +1,37 @@
+{
+    "version": "1.1.0",
+    "iteration_id": "a6a4c1b2-2f6d-4d9a-9b0a-111111111111",
+    "timestamp": "2025-11-03T06:00:00Z",
+    "user_input": "Analyze Dynamics 365 manufacturing opportunities in automotive sector focusing on supply chain optimization and predictive maintenance gaps.",
+    "previous_model_output": "Generic manufacturing analysis without specific D365 integration points.",
+    "conversation_context": "User requested comprehensive analysis of manufacturing opportunities with focus on ISV product development for Dynamics 365 ecosystem.",
+    "user_tag": "needs_depth",
+    "analysis": {
+        "structural_errors": [
+            "Missing D365 integration analysis",
+            "No ISV opportunity mapping"
+        ],
+        "factual_errors": [],
+        "tone_mismatch": false,
+        "missing_steps": [
+            "Competitive landscape analysis",
+            "Market sizing",
+            "Technical feasibility assessment"
+        ],
+        "contradictions": [],
+        "capability_gaps": [
+            "market_research",
+            "competitive_analysis",
+            "opportunity_identification"
+        ],
+        "confidence_estimate": 0.75,
+        "urgency": 80
+    },
+    "chosen_agent": "research_agent",
+    "optimized_prompt": "Act like a senior manufacturing technology analyst specializing in Microsoft Dynamics 365 ecosystem. Goal: Identify unmet needs and ISV opportunities in automotive manufacturing. Focus areas: 1) Supply chain optimization gaps in current D365 offerings; 2) Predictive maintenance integration opportunities; 3) Market size and competitive landscape. Analysis framework: a) Current D365 capabilities assessment; b) Gap identification vs. market needs; c) ISV product opportunity mapping; d) Technical feasibility and integration points; e) Market size estimation and customer segments. Output: Structured JSON with opportunity_categories, gap_analysis, market_potential, technical_requirements, and competitive_positioning. Include confidence scores for each finding. Constraints: Focus on automotive manufacturing specifically; consider global market but emphasize North America and Europe; validate against existing D365 partner ecosystem. Take a deep breath and work on this problem step-by-step.",
+    "scaffold_plan": {
+        "create_agent": false,
+        "new_agent_id": null,
+        "files": []
+    }
+}

@@ -1,0 +1,150 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Next Prompt File",
+    "type": "object",
+    "required": [
+        "version",
+        "iteration_id",
+        "timestamp",
+        "user_input",
+        "user_tag",
+        "analysis",
+        "chosen_agent",
+        "optimized_prompt"
+    ],
+    "properties": {
+        "version": {
+            "type": "string",
+            "const": "1.1.0"
+        },
+        "iteration_id": {
+            "type": "string"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "user_input": {
+            "type": "string"
+        },
+        "previous_model_output": {
+            "type": "string"
+        },
+        "conversation_context": {
+            "type": "string"
+        },
+        "user_tag": {
+            "type": "string",
+            "enum": [
+                "accurate",
+                "needs_depth",
+                "off_topic",
+                "hallucination",
+                "unsafe",
+                "wrong_format",
+                "incomplete"
+            ]
+        },
+        "analysis": {
+            "type": "object",
+            "required": [
+                "structural_errors",
+                "factual_errors",
+                "tone_mismatch",
+                "missing_steps",
+                "contradictions",
+                "capability_gaps",
+                "confidence_estimate",
+                "urgency"
+            ],
+            "properties": {
+                "structural_errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "factual_errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tone_mismatch": {
+                    "type": "boolean"
+                },
+                "missing_steps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "contradictions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "capability_gaps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "confidence_estimate": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "urgency": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            }
+        },
+        "chosen_agent": {
+            "type": "string"
+        },
+        "optimized_prompt": {
+            "type": "string"
+        },
+        "scaffold_plan": {
+            "type": "object",
+            "required": [
+                "create_agent",
+                "new_agent_id",
+                "files"
+            ],
+            "properties": {
+                "create_agent": {
+                    "type": "boolean"
+                },
+                "new_agent_id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "files": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "path",
+                            "content"
+                        ],
+                        "properties": {
+                            "path": {
+                                "type": "string"
+                            },
+                            "content": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

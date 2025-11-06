@@ -1,0 +1,41 @@
+{
+  "workbench.colorTheme": "Tomorrow Night Blue",
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": true,
+  "files.associations": {
+    "*.md": "markdown",
+    "*.jsonl": "jsonl",
+    "agent.manifest.json": "json",
+    "*.workflow": "yaml"
+  },
+  "markdown.preview.enhance": true,
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "**/Apps/agents/*/agent.manifest.json"
+      ],
+      "url": "./Config/schemas/agent-manifest-schema.json"
+    },
+    {
+      "fileMatch": [
+        "**/Prompts/next_prompt.*.json"
+      ],
+      "url": "./Prompts/next_prompt.template.json"
+    }
+  ],
+  "search.exclude": {
+    "**/Data/outputs/**": true,
+    "**/Prompts/lessons/**": false
+  },
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
+  },
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "powershell.codeFormatting.preset": "OTBS"
+}
