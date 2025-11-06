@@ -1,0 +1,248 @@
+{
+  "agent_id": "jibonflow_developer_agent",
+  "version": "1.0.0",
+  "name": "JibonFlow Developer Agent",
+  "description": "Healthcare-specialized developer agent for implementing JibonFlow Digital Health Platform with HIPAA compliance, Bengali language support, and Bangladesh healthcare regulations integration.",
+  "category": "generation",
+  "capabilities": [
+    "healthcare_code_generation",
+    "hipaa_compliance_implementation",
+    "fhir_r4_integration",
+    "bengali_localization",
+    "jwt_oauth2_authentication",
+    "nextjs_typescript_development",
+    "express_microservices",
+    "healthcare_database_design",
+    "telemedicine_e2ee_implementation",
+    "bangladesh_payment_integration",
+    "medical_prescription_systems",
+    "healthcare_audit_trails",
+    "gdpr_data_protection",
+    "bangladesh_digital_security_compliance",
+    "mcp_task_coordination",
+    "healthcare_testing_protocols",
+    "cultural_healthcare_integration",
+    "pwa_offline_healthcare_access",
+    "healthcare_api_development",
+    "medical_data_encryption"
+  ],
+  "input_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["development_request", "healthcare_context"],
+    "properties": {
+      "development_request": {
+        "type": "string",
+        "description": "Specific development task or feature to implement"
+      },
+      "healthcare_context": {
+        "type": "object",
+        "properties": {
+          "compliance_requirements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["HIPAA", "GDPR", "Bangladesh_Digital_Security_Act", "BMDC", "WHO_FPP"]
+            }
+          },
+          "cultural_requirements": {
+            "type": "object",
+            "properties": {
+              "language": {
+                "type": "string",
+                "enum": ["bengali", "english", "bilingual"]
+              },
+              "cultural_sensitivity": {
+                "type": "array",
+                "items": {"type": "string"}
+              }
+            }
+          },
+          "technical_stack": {
+            "type": "object",
+            "properties": {
+              "frontend": {"type": "array", "items": {"type": "string"}},
+              "backend": {"type": "array", "items": {"type": "string"}},
+              "database": {"type": "string"},
+              "cloud_provider": {"type": "string"}
+            }
+          }
+        }
+      },
+      "mcp_task_context": {
+        "type": "object",
+        "properties": {
+          "task_id": {"type": "string"},
+          "dependencies": {"type": "array", "items": {"type": "string"}},
+          "quality_gates": {"type": "array", "items": {"type": "string"}}
+        }
+      },
+      "scaffold_reference": {
+        "type": "string",
+        "description": "Reference to JibonFlow scaffolding directory for context"
+      }
+    }
+  },
+  "output_schema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": ["implementation_code", "compliance_validation", "testing_framework"],
+    "properties": {
+      "implementation_code": {
+        "type": "object",
+        "properties": {
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {"type": "string"},
+                "content": {"type": "string"},
+                "file_type": {"type": "string"},
+                "healthcare_annotations": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          },
+          "architecture_decisions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "decision": {"type": "string"},
+                "healthcare_rationale": {"type": "string"},
+                "compliance_impact": {"type": "string"}
+              }
+            }
+          }
+        }
+      },
+      "compliance_validation": {
+        "type": "object",
+        "properties": {
+          "hipaa_compliance": {
+            "type": "object",
+            "properties": {
+              "technical_safeguards": {"type": "array", "items": {"type": "string"}},
+              "administrative_safeguards": {"type": "array", "items": {"type": "string"}},
+              "physical_safeguards": {"type": "array", "items": {"type": "string"}},
+              "compliance_score": {"type": "number", "minimum": 0, "maximum": 100}
+            }
+          },
+          "gdpr_compliance": {
+            "type": "object",
+            "properties": {
+              "data_protection_measures": {"type": "array", "items": {"type": "string"}},
+              "privacy_by_design": {"type": "array", "items": {"type": "string"}},
+              "data_subject_rights": {"type": "array", "items": {"type": "string"}},
+              "compliance_score": {"type": "number", "minimum": 0, "maximum": 100}
+            }
+          },
+          "bangladesh_compliance": {
+            "type": "object",
+            "properties": {
+              "digital_security_measures": {"type": "array", "items": {"type": "string"}},
+              "data_localization": {"type": "array", "items": {"type": "string"}},
+              "healthcare_licensing": {"type": "array", "items": {"type": "string"}},
+              "compliance_score": {"type": "number", "minimum": 0, "maximum": 100}
+            }
+          }
+        }
+      },
+      "testing_framework": {
+        "type": "object",
+        "properties": {
+          "unit_tests": {"type": "array", "items": {"type": "string"}},
+          "integration_tests": {"type": "array", "items": {"type": "string"}},
+          "healthcare_compliance_tests": {"type": "array", "items": {"type": "string"}},
+          "security_tests": {"type": "array", "items": {"type": "string"}},
+          "cultural_sensitivity_tests": {"type": "array", "items": {"type": "string"}}
+        }
+      },
+      "deployment_guide": {
+        "type": "object",
+        "properties": {
+          "healthcare_infrastructure_requirements": {"type": "array", "items": {"type": "string"}},
+          "bangladesh_deployment_considerations": {"type": "array", "items": {"type": "string"}},
+          "compliance_verification_steps": {"type": "array", "items": {"type": "string"}},
+          "monitoring_and_audit_setup": {"type": "array", "items": {"type": "string"}}
+        }
+      },
+      "cultural_integration": {
+        "type": "object",
+        "properties": {
+          "bengali_language_implementation": {"type": "array", "items": {"type": "string"}},
+          "cultural_healthcare_norms": {"type": "array", "items": {"type": "string"}},
+          "accessibility_considerations": {"type": "array", "items": {"type": "string"}},
+          "digital_literacy_adaptations": {"type": "array", "items": {"type": "string"}}
+        }
+      },
+      "mcp_task_completion": {
+        "type": "object",
+        "properties": {
+          "completed_tasks": {"type": "array", "items": {"type": "string"}},
+          "quality_validation": {"type": "object"},
+          "next_phase_recommendations": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  },
+  "safety_restrictions": [
+    "Never generate code that violates HIPAA patient privacy requirements",
+    "Always implement proper healthcare data encryption and access controls",
+    "Ensure all patient data handling complies with GDPR data subject rights",
+    "Verify Bangladesh Digital Security Act 2018 compliance for all implementations",
+    "Never expose sensitive healthcare APIs without proper authentication",
+    "Always implement proper audit trails for healthcare data access",
+    "Ensure cultural sensitivity in all Bengali language implementations",
+    "Never generate code that could compromise patient safety or care quality",
+    "Always validate medical data integrity and accuracy requirements",
+    "Ensure proper consent management for all healthcare data processing",
+    "Never implement healthcare features without proper regulatory compliance validation",
+    "Always consider accessibility requirements for diverse user populations",
+    "Ensure proper error handling for critical healthcare system failures",
+    "Never generate authentication systems without multi-factor security",
+    "Always implement proper backup and disaster recovery for healthcare data"
+  ],
+  "quality_metrics": {
+    "accuracy_threshold": 0.95,
+    "completeness_score": 0.92,
+    "response_time_max": 300,
+    "data_freshness_days": 1
+  },
+  "integration_points": {
+    "dynamics365_modules": [
+      "Customer Service",
+      "Field Service",
+      "Supply Chain Management",
+      "Finance and Operations"
+    ],
+    "microsoft_ecosystem": [
+      "Azure Health Data Services",
+      "Microsoft Cloud for Healthcare",
+      "Power Platform",
+      "Azure Active Directory B2C",
+      "Azure API Management",
+      "Azure Security Center"
+    ]
+  },
+  "dependencies": [
+    "gen_scaffold_agent_v2",
+    "research_agent",
+    "prd_agent",
+    "technical_planning_agent"
+  ],
+  "next_agents": [
+    "evaluator_agent",
+    "market_research_agent"
+  ],
+  "performance_benchmarks": {
+    "healthcare_compliance_score": "95% minimum across all regulations",
+    "code_generation_accuracy": "92% functional correctness on first generation",
+    "bengali_localization_quality": "90% cultural appropriateness validation",
+    "security_implementation_score": "98% security best practices compliance",
+    "fhir_r4_compliance": "95% FHIR resource structure accuracy",
+    "development_velocity": "Complete feature implementation within 24 hours",
+    "testing_coverage": "85% minimum code coverage with healthcare-specific tests",
+    "deployment_readiness": "Production-ready code with full compliance documentation"
+  }
+}
