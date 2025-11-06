@@ -1,0 +1,133 @@
+{
+  "agent_id": "gen_scaffold_agent_v2",
+  "version": "2.0.0",
+  "name": "Gen-Scaffold-Agent v2.0 - Enhanced JibonFlow Healthcare",
+  "description": "Advanced healthcare platform scaffolding master with 7-strategy framework integration for JibonFlow Digital Health Platform with MCP task orchestration and HIPAA/GDPR compliance",
+  "category": "generation",
+  "capabilities": [
+    "healthcare_directory_scaffolding",
+    "mcp_task_orchestration", 
+    "hipaa_gdpr_compliance_templates",
+    "bangladesh_healthcare_context",
+    "fhir_r4_scaffolding",
+    "telemedicine_platform_setup",
+    "quality_assurance_validation",
+    "dynamic_360_methodology_integration"
+  ],
+  "input_schema": {
+    "type": "object",
+    "required": [
+      "scaffolding_request_type",
+      "healthcare_compliance_level",
+      "mcp_task_scope",
+      "technology_stack_components"
+    ],
+    "properties": {
+      "scaffolding_request_type": {
+        "type": "string",
+        "enum": ["frontend_application", "backend_microservice", "healthcare_compliance", "mcp_orchestration", "full_platform"]
+      },
+      "healthcare_compliance_level": {
+        "type": "string", 
+        "enum": ["HIPAA", "GDPR", "Bangladesh_DSA", "comprehensive"]
+      },
+      "mcp_task_scope": {
+        "type": "object",
+        "properties": {
+          "task_count": {"type": "integer", "minimum": 1, "maximum": 51},
+          "critical_path_focus": {"type": "boolean"},
+          "phase": {"type": "string", "enum": ["foundation", "enhancement", "validation", "deployment"]}
+        }
+      },
+      "technology_stack_components": {
+        "type": "array",
+        "items": {"type": "string"},
+        "minItems": 1
+      },
+      "cultural_sensitivity_requirements": {
+        "type": "object",
+        "properties": {
+          "bangladesh_context": {"type": "boolean"},
+          "healthcare_provider_integration": {"type": "boolean"},
+          "local_regulatory_compliance": {"type": "boolean"}
+        }
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["scaffolding_structure", "compliance_validation", "quality_metrics"],
+    "properties": {
+      "scaffolding_structure": {
+        "type": "object",
+        "properties": {
+          "directory_hierarchy": {"type": "object"},
+          "template_files": {"type": "array", "items": {"type": "string"}},
+          "configuration_files": {"type": "array", "items": {"type": "string"}},
+          "compliance_frameworks": {"type": "array", "items": {"type": "string"}}
+        }
+      },
+      "compliance_validation": {
+        "type": "object",
+        "properties": {
+          "hipaa_compliance": {"type": "boolean"},
+          "gdpr_compliance": {"type": "boolean"}, 
+          "bangladesh_dsa_compliance": {"type": "boolean"},
+          "fhir_r4_integration": {"type": "boolean"}
+        }
+      },
+      "quality_metrics": {
+        "type": "object",
+        "properties": {
+          "predicted_quality_score": {"type": "number", "minimum": 0, "maximum": 100},
+          "compliance_coverage": {"type": "number", "minimum": 0, "maximum": 100},
+          "mcp_task_coordination": {"type": "number", "minimum": 0, "maximum": 100}
+        }
+      },
+      "mcp_orchestration": {
+        "type": "object",
+        "properties": {
+          "task_templates": {"type": "array", "items": {"type": "string"}},
+          "dependency_mapping": {"type": "object"},
+          "validation_frameworks": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  },
+  "safety_restrictions": [
+    "healthcare_compliance_mandatory",
+    "patient_privacy_protection_required",
+    "no_medical_advice_generation",
+    "regulatory_compliance_validation_required",
+    "cultural_sensitivity_enforcement",
+    "data_protection_law_adherence",
+    "audit_trail_maintenance_required"
+  ],
+  "quality_metrics": {
+    "accuracy_threshold": 0.965,
+    "completeness_score": 0.95,
+    "response_time_max": 180,
+    "data_freshness_days": 1
+  },
+  "integration_points": {
+    "dynamics365_modules": ["healthcare_industry_solutions", "field_service", "customer_service"],
+    "microsoft_ecosystem": ["azure_healthcare_apis", "fhir_server", "compliance_manager", "power_platform"]
+  },
+  "dependencies": [
+    "prompt_engineer_agent_v3",
+    "quality_assurance_agent",
+    "compliance_validation_agent"
+  ],
+  "next_agents": [
+    "developer_agent",
+    "testing_validation_agent", 
+    "deployment_orchestration_agent"
+  ],
+  "performance_benchmarks": {
+    "scaffolding_generation_time": "under 3 minutes",
+    "compliance_validation_time": "under 1 minute",
+    "mcp_task_coordination_setup": "under 5 minutes",
+    "quality_prediction_accuracy": "over 95 percent",
+    "healthcare_compliance_rate": "100 percent"
+  }
+}
