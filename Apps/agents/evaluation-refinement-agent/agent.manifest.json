@@ -1,0 +1,154 @@
+{
+  "agent_id": "evaluation_refinement_agent",
+  "version": "1.0.0",
+  "name": "Evaluation Refinement Agent",
+  "description": "Mission-aligned quality validation and refinement agent for Dynamic 360. Ensures all agent outputs maintain D365 manufacturing opportunity focus with quantified ISV development metrics. Validates mission alignment, detects context drift, and routes refinements through specialist agents.",
+  "category": "evaluation",
+  "capabilities": [
+    "validate_d365_manufacturing_context",
+    "identify_isv_opportunity_alignment",
+    "measure_mission_alignment_score",
+    "detect_context_drift_patterns",
+    "validate_business_roi_metrics",
+    "assess_workflow_integration_clarity",
+    "route_refinement_corrections",
+    "generate_quality_gate_report",
+    "calculate_opportunity_impact_score",
+    "validate_jibonflow_d365_connection",
+    "assess_schema_compliance",
+    "compile_refinement_recommendations",
+    "generate_multi_turn_refinement_plan",
+    "produce_governance_validation_report",
+    "benchmark_against_success_patterns",
+    "predict_downstream_impact",
+    "extended_thinking_validation_engine"
+  ],
+  "input_schema": {
+    "type": "object",
+    "required": ["agent_output", "validation_context"],
+    "properties": {
+      "agent_output": {
+        "type": "string",
+        "description": "The agent response to validate"
+      },
+      "validation_context": {
+        "type": "object",
+        "description": "Context for validation including query, original_request, agent_id"
+      },
+      "project_context": {
+        "type": "string",
+        "description": "Dynamic 360 project context and mission statement"
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["iteration_id", "timestamp", "mission_alignment_score", "quality_gate_status"],
+    "properties": {
+      "iteration_id": {
+        "type": "string",
+        "description": "UUID for this evaluation iteration"
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Evaluation timestamp"
+      },
+      "agent_evaluated": {
+        "type": "string",
+        "description": "ID of agent being evaluated"
+      },
+      "mission_alignment_score": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "D365 manufacturing ISV opportunity focus score"
+      },
+      "quality_gate_status": {
+        "type": "string",
+        "enum": ["pass", "conditional", "fail"],
+        "description": "Overall quality gate assessment"
+      },
+      "validation_results": {
+        "type": "object",
+        "description": "Detailed validation results from all functions"
+      },
+      "refinement_recommendations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Recommended refinements for improvement"
+      },
+      "routing_decisions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "specialist_agent": {
+              "type": "string"
+            },
+            "issue": {
+              "type": "string"
+            },
+            "priority": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "safety_restrictions": [
+    "Never bypass D365 manufacturing context validation requirements",
+    "Ensure 100% schema compliance for all outputs",
+    "Maintain governance validation for all agent responses",
+    "Preserve audit trails for all validation decisions",
+    "Validate enterprise data protection standards",
+    "Enforce ISV opportunity identification focus",
+    "Prevent mission drift to non-manufacturing domains",
+    "Validate all ROI calculations and business metrics",
+    "Ensure backward compatibility with existing agents",
+    "Maintain safety and compliance with industry standards"
+  ],
+  "quality_metrics": {
+    "accuracy_threshold": 0.95,
+    "completeness_score": 0.92,
+    "response_time_max": 30000,
+    "data_freshness_days": 1
+  },
+  "integration_points": {
+    "dynamics365_modules": [
+      "manufacturing",
+      "supply_chain",
+      "product_lifecycle_management",
+      "sales",
+      "service"
+    ],
+    "microsoft_ecosystem": [
+      "Dynamics 365",
+      "Power Platform",
+      "Azure",
+      "Microsoft Partner Center"
+    ]
+  },
+  "dependencies": [
+    "research_agent",
+    "prd_agent",
+    "technical_planning_agent",
+    "roadmap_agent",
+    "jibonflow_developer_agent"
+  ],
+  "next_agents": [
+    "editor_agent",
+    "prompt_engineer_agent_v3"
+  ],
+  "performance_benchmarks": {
+    "manufacturing_mission_alignment_target": "92-96%",
+    "isv_opportunity_identification_improvement": "+18-22%",
+    "context_drift_prevention_rate": ">95%",
+    "multi_turn_refinement_success_rate": ">85%",
+    "quality_gate_pass_rate": "90%+"
+  }
+}
+
