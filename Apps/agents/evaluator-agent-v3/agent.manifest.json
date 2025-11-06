@@ -1,0 +1,117 @@
+{
+  "agent_id": "evaluator_agent_v3",
+  "name": "Enhanced Evaluator Agent v3.0 - D365 Manufacturing Focus",
+  "version": "3.0.0",
+  "description": "Advanced quality assessment and alignment validation agent with D365 manufacturing ISV focus, 7-strategy integration, and healthcare-to-manufacturing bridge analysis capabilities",
+  "category": "evaluation",
+  "capabilities": [
+    "d365_manufacturing_alignment_assessment",
+    "isv_opportunity_validation",
+    "quality_score_verification",
+    "healthcare_to_manufacturing_bridge_analysis",
+    "business_case_validation",
+    "seven_strategy_compliance_tracking",
+    "extended_thinking_validation",
+    "multi_turn_refinement_coordination",
+    "manufacturing_workflow_integration",
+    "partner_center_api_assessment",
+    "erp_system_evaluation",
+    "production_planning_validation",
+    "supply_chain_analysis",
+    "manufacturing_cost_assessment",
+    "regulatory_compliance_check",
+    "scalability_assessment",
+    "roi_calculation_validation",
+    "implementation_readiness_evaluation",
+    "technical_architecture_review",
+    "data_integration_assessment"
+  ],
+  "input_schema": {
+    "type": "object",
+    "required": ["agent_response", "evaluation_criteria"],
+    "properties": {
+      "agent_response": {
+        "type": "object",
+        "description": "Previous agent response requiring evaluation"
+      },
+      "evaluation_criteria": {
+        "type": "object",
+        "description": "D365 manufacturing-specific evaluation framework"
+      },
+      "quality_benchmarks": {
+        "type": "array",
+        "description": "Target quality metrics for D365 ISV development"
+      }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "required": ["alignment_assessment", "quality_validation", "improvement_recommendations", "seven_strategy_compliance"],
+    "properties": {
+      "alignment_assessment": {
+        "type": "object",
+        "description": "D365 manufacturing focus alignment evaluation"
+      },
+      "quality_validation": {
+        "type": "object", 
+        "description": "Comprehensive quality score verification with D365 criteria"
+      },
+      "improvement_recommendations": {
+        "type": "array",
+        "description": "Specific D365 manufacturing enhancement suggestions"
+      },
+      "seven_strategy_compliance": {
+        "type": "object",
+        "description": "PEA v3.0 7-strategy framework compliance assessment"
+      }
+    }
+  },
+  "safety_restrictions": [
+    "no_healthcare_data_exposure",
+    "enterprise_data_protection",
+    "d365_compliance_standards",
+    "manufacturing_ip_protection",
+    "audit_trail_maintenance"
+  ],
+  "quality_metrics": {
+    "accuracy_threshold": 0.95,
+    "completeness_score": 0.90,
+    "response_time_max": 300,
+    "data_freshness_days": 7
+  },
+  "integration_points": {
+    "dynamics365_modules": [
+      "Finance and Operations",
+      "Supply Chain Management",
+      "Manufacturing",
+      "Project Operations",
+      "Commerce"
+    ],
+    "microsoft_ecosystem": [
+      "Power Platform",
+      "Azure IoT",
+      "Microsoft Graph",
+      "Partner Center API",
+      "Microsoft AppSource"
+    ]
+  },
+  "dependencies": [
+    "microsoft_dynamics_365_apis",
+    "partner_center_integration",
+    "manufacturing_industry_knowledge_base",
+    "quality_assessment_frameworks",
+    "business_case_templates"
+  ],
+  "next_agents": [
+    "research_agent",
+    "prd_agent",
+    "technical_planning_agent"
+  ],
+  "performance_benchmarks": {
+    "d365_manufacturing_alignment_score": ">= 0.85",
+    "isv_opportunity_confidence": ">= 0.80",
+    "business_case_completeness": ">= 0.90",
+    "technical_feasibility_score": ">= 0.75",
+    "roi_validation_accuracy": ">= 0.85"
+  }
+}
